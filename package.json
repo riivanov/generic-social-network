@@ -6,5 +6,10 @@
   },
   "scripts": {
     "dev": "next dev"
+  },
+  "devDependencies": {
+    "@types/node": "20.12.5",
+    "@types/react": "^18.2.74",
+    "typescript": "5.4.4"
   }
 }
