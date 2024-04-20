@@ -10,11 +10,11 @@
     "dev": "next dev"
   },
   "devDependencies": {
+    "@nx/next": "^18.3.3",
     "@types/node": "20.12.5",
     "@types/react": "^18.2.74",
-    "typescript": "5.4.4",
-    "nx": "18.3.3",
-    "@nx/next": "18.3.3"
+    "nx": "^18.3.3",
+    "typescript": "5.4.4"
   },
   "nx": {}
 }
