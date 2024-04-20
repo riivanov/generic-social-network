@@ -7,12 +7,14 @@
     "sass": "^1.74.1"
   },
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "cypress": "cypress open"
   },
   "devDependencies": {
     "@nx/next": "^18.3.3",
     "@types/node": "20.12.5",
     "@types/react": "^18.2.74",
+    "cypress": "^13.8.0",
     "nx": "^18.3.3",
     "typescript": "5.4.4"
   },
