@@ -1,3 +1,6 @@
 token
 node_modules/
 .next
+
+
+.nx/cache
