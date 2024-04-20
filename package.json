@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "cypress": "cypress open"
+    "cypress": "cypress open --e2e --browser chromium"
   },
   "devDependencies": {
     "@nx/next": "^18.3.3",
