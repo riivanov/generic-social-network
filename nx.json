@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "main",
+  "defaultProject": "generic-social-network",
   "plugins": [
     {
       "plugin": "@nx/next/plugin",
@@ -11,5 +12,9 @@
         "serveStaticTargetName": "serve-static"
       }
     }
-  ]
+  ],
+  "targetDefaults": {
+    "generic-social-network": {
+    }
+  }
 }
