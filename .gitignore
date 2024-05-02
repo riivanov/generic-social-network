@@ -1,6 +1,5 @@
 token
 node_modules/
 .next
-
-
-.nx/cache
+.nx
+tsconfig.tsbuildinfo
