@@ -1,0 +1,8 @@
+{
+  "title": "generic-social-network",
+  "targets": {
+    "dev": {
+      "command": "nx dev server"
+    }
+  }
+}

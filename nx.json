@@ -1,7 +1,29 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "main",
-  "defaultProject": "generic-social-network",
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    },
+    "e2e": {
+      "cache": true
+    }
+  },
+  "installation": {
+    "version": "18.3.4",
+    "plugins": {
+      "@nx/cypress": "18.3.4",
+      "@swc-node/register": "latest",
+      "@swc/core": "latest",
+      "@nx/next": "18.3.4"
+    }
+  },
   "plugins": [
     {
       "plugin": "@nx/next/plugin",
@@ -12,9 +34,5 @@
         "serveStaticTargetName": "serve-static"
       }
     }
-  ],
-  "targetDefaults": {
-    "generic-social-network": {
-    }
-  }
+  ]
 }

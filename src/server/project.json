@@ -1,0 +1,8 @@
+{
+  "title": "server",
+  "targets": {
+    "dev": {
+      "command": "nest start --watch"
+    }
+  }
+}
