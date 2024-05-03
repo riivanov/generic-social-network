@@ -7,7 +7,7 @@
     "sass": "^1.74.1"
   },
   "devDependencies": {
-    "@nx/next": "^18.3.3",
+    "@nx/next": "^18.3.4",
     "@types/node": "20.12.5",
     "@types/react": "^18.2.74",
     "cypress": "^13.8.0",
