@@ -1,6 +1,16 @@
 {
+  "name": "generic-social-network",
   "title": "generic-social-network",
   "targets": {
+    "undefined": {
+      "command": "nx dev server"
+    },
+    "app": {
+      "command": "nx dev app"
+    },
+    "server": {
+      "command": "nx dev server"
+    },
     "dev": {
       "command": "nx dev server"
     }
