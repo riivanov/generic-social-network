@@ -1,4 +1,6 @@
 proj
+app
+server
 auth
 layout
 
