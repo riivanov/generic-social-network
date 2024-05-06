@@ -1,5 +1,7 @@
 {
-  "title": "generic-social-network",
+  "name": "app",
+  "title": "app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "targets": {
     "dev": {
       "command": "next dev"
