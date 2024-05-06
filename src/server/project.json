@@ -1,8 +1,46 @@
 {
+  "name": "server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "title": "server",
   "targets": {
     "dev": {
       "command": "nest start --watch"
+    },
+    "build": {
+      "command": "npx @nestjs/cli build"
+    },
+    "format": {
+      "command": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    },
+    "lint": {
+      "command": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
+    },
+    "start": {
+      "command": "nest start"
+    },
+    "start:debug": {
+      "command": "nest start --debug --watch"
+    },
+    "start:dev": {
+      "command": "nest start --watch"
+    },
+    "start:prod": {
+      "command": "node dist/main"
+    },
+    "test": {
+      "command": "jest"
+    },
+    "test:cov": {
+      "command": "jest --coverage"
+    },
+    "test:debug": {
+      "command": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    },
+    "test:e2e": {
+      "command": "jest --config ./test/jest-e2e.json"
+    },
+    "test:watch": {
+      "command": "jest --watch"
     }
   }
 }
