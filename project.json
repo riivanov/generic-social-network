@@ -10,9 +10,6 @@
     },
     "server": {
       "command": "nx dev server"
-    },
-    "dev": {
-      "command": "nx dev server"
     }
   }
 }
