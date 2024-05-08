@@ -1,6 +1,3 @@
 {
-  "exclude": ["node_modules"],
-  "compilerOptions": {
-    "skipLibCheck": true
-  }
+  "exclude": ["node_modules"]
 }
