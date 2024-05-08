@@ -1,12 +1,14 @@
 {
   "name": "generic-social-network",
-  "title": "generic-social-network",
   "targets": {
-    "undefined": {
-      "command": "nx dev server"
-    },
     "app": {
-      "command": "nx dev app"
+      "command": "nx dev client"
+    },
+    "clean": {
+      "command": "rm -rf ./src/client/node_modules/ ./src/server/node_modules/ ./node_modules/"
+    },
+    "client": {
+      "command": "nx dev client"
     },
     "server": {
       "command": "nx dev server"
@@ -14,5 +16,6 @@
     "undefined": {
       "command": "nx server"
     }
-  }
+  },
+  "title": "generic-social-network"
 }
