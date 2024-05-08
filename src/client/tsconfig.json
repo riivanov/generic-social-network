@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "allowJs": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
@@ -11,6 +11,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
+    "outDir": "./dist",
     "plugins": [
       {
         "name": "next"
@@ -21,6 +22,12 @@
     "strict": true,
     "target": "es2016"
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "../src/server"],
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js"
+  ]
 }

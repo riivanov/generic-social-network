@@ -1,8 +1,14 @@
 {
-  "name": "app",
-  "title": "app",
+  "name": "client",
+  "title": "client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "targets": {
+    "undefined": {
+      "command": "nx dev client"
+    },
+    "client": {
+      "command": "nx dev client"
+    },
     "dev": {
       "command": "next dev"
     },
