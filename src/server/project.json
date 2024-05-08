@@ -3,11 +3,26 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "title": "server",
   "targets": {
+    "undefined": {
+      "command": "nx dev server"
+    },
+    "server": {
+      "command": "nx dev server"
+    },
     "dev": {
-      "command": "nest start --watch"
+      "command": "nest start",
+      "options": {
+        "watch": true,
+        "exclude": "client",
+        "config": "./src/server/nest-cli.json"
+      },
+      "dependsOn": ["build"]
     },
     "build": {
-      "command": "npx @nestjs/cli build"
+      "command": "rm -rf ./dist && nest build",
+      "options": {
+        "config": "./src/server/nest-cli.json"
+      }
     },
     "format": {
       "command": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
