@@ -19,19 +19,19 @@ importers:
         version: 18.3.4(@babel/traverse@7.24.5)(@types/node@20.12.5)(chokidar@3.6.0)(js-yaml@4.1.0)(nx@18.3.4)(ts-node@10.9.2(@types/node@20.12.5)(typescript@5.3.3))(typescript@5.3.3)
       '@nx/next':
         specifier: 18.3.4
-        version: 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)
+        version: 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)
       next:
         specifier: ^14.2.3
-        version: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0)
+        version: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0)
       nx:
         specifier: ^18.3.4
         version: 18.3.4
 
-  src/app:
+  src/client:
     dependencies:
       next:
         specifier: ^14.1.4
-        version: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0)
+        version: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -40,11 +40,11 @@ importers:
         version: 18.3.1(react@18.3.1)
       sass:
         specifier: ^1.74.1
-        version: 1.76.0
+        version: 1.77.0
     devDependencies:
       '@nx/next':
         specifier: ^18.3.4
-        version: 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)
+        version: 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)
       '@types/node':
         specifier: 20.12.5
         version: 20.12.5
@@ -53,7 +53,7 @@ importers:
         version: 18.3.1
       cypress:
         specifier: ^13.8.0
-        version: 13.8.1
+        version: 13.9.0
       nx:
         specifier: ^18.3.3
         version: 18.3.4
@@ -2433,8 +2433,8 @@ packages:
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
-  cypress@13.8.1:
-    resolution: {integrity: sha512-Uk6ovhRbTg6FmXjeZW/TkbRM07KPtvM5gah1BIMp4Y2s+i/NMxgaLw0+PbYTOdw1+egE0FP3mWRiGcRkjjmhzA==}
+  cypress@13.9.0:
+    resolution: {integrity: sha512-atNjmYfHsvTuCaxTxLZr9xGoHz53LLui3266WWxXJHY7+N6OdwJdg/feEa3T+buez9dmUXHT1izCOklqG82uCQ==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
 
@@ -2523,8 +2523,9 @@ packages:
   detect-node@2.1.0:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
 
-  detect-port@1.5.1:
-    resolution: {integrity: sha512-aBzdj76lueB6uUst5iAs7+0H/oOjqI5D16XUWxlWMIMROhcM0rfsNVk93zTngq1dDNpoXRr++Sus7ETAExppAQ==}
+  detect-port@1.6.1:
+    resolution: {integrity: sha512-CmnVc+Hek2egPx1PeTFVta2W78xy2K/9Rkf6cC4T59S50tVnzKj+tnx5mmx5lwvCkujZ4uRrpRSuV+IVs3f90Q==}
+    engines: {node: '>= 4.0.0'}
     hasBin: true
 
   dezalgo@1.0.4:
@@ -2591,8 +2592,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.4.757:
-    resolution: {integrity: sha512-jftDaCknYSSt/+KKeXzH3LX5E2CvRLm75P3Hj+J/dv3CL0qUYcOt13d5FN1NiL5IJbbhzHrb3BomeG2tkSlZmw==}
+  electron-to-chromium@1.4.759:
+    resolution: {integrity: sha512-qZJc+zsuI+/5UjOSFnpkJBwwLMH1AZgyKqJ7LUNnRsB7v/cDjMu9DvXgp9kH6PTTZxjnPXGp2Uhurw+2Ll4Hjg==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -2615,8 +2616,8 @@ packages:
   end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
 
-  enhanced-resolve@5.16.0:
-    resolution: {integrity: sha512-O+QWCviPNSSLAD9Ucn8Awv+poAkqn3T1XY5/N7kR7rQO9yfSGWkYZDwpJ+iKF7B8rxaQKWngSqACpgzeapSyoA==}
+  enhanced-resolve@5.16.1:
+    resolution: {integrity: sha512-4U5pNsuDl0EhuZpq46M5xPslstkviJuhrdobaRDBk2Jy2KO37FDAJl4lb2KlNabxT0m4MTK2UHNrsAcphE8nyw==}
     engines: {node: '>=10.13.0'}
 
   enquirer@2.3.6:
@@ -3692,10 +3693,6 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lru-cache@6.0.0:
-    resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
-    engines: {node: '>=10'}
-
   magic-string@0.30.0:
     resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
     engines: {node: '>=12'}
@@ -4603,8 +4600,8 @@ packages:
       sass-embedded:
         optional: true
 
-  sass@1.76.0:
-    resolution: {integrity: sha512-nc3LeqvF2FNW5xGF1zxZifdW3ffIz5aBb7I7tSvOoNu7z1RQ6pFt9MBuiPtjgaI62YWrM/txjWlOCFiGtf2xpw==}
+  sass@1.77.0:
+    resolution: {integrity: sha512-eGj4HNfXqBWtSnvItNkn7B6icqH14i3CiCGbzMKs3BAPTq62pp9NBYsBgyN4cA+qssqo9r26lW4JSvlaUUWbgw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -4643,8 +4640,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.6.0:
-    resolution: {integrity: sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==}
+  semver@7.6.1:
+    resolution: {integrity: sha512-f/vbBsu+fOiYt+lmwZV0rVwJScl46HppnOA1ZvIuBWKOTlllpyJ3bfVax76/OrhCH38dyxoDIA8K7uB963IYgA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4898,8 +4895,8 @@ packages:
   svg-parser@2.0.4:
     resolution: {integrity: sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==}
 
-  svgo@3.2.0:
-    resolution: {integrity: sha512-4PP6CMW/V7l/GmKRKzsLR8xxjdHTV4IMvhTnpuHwwBazSIlw5W/5SmPjN8Dwyt7lKbSJrRDgp4t9ph0HgChFBQ==}
+  svgo@3.3.0:
+    resolution: {integrity: sha512-y350OL6eAmhDbWcASdukXoG0MbpdfJQPHwEUAaTW1HBNSO2VErJ35fs7uNLSWjzFDhfua517RcouBzjZoO1JFg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -5342,9 +5339,6 @@ packages:
 
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
-
-  yallist@4.0.0:
-    resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
   yaml@1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
@@ -6747,9 +6741,9 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nrwl/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)':
+  '@nrwl/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)':
     dependencies:
-      '@nx/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)
+      '@nx/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)
     transitivePeerDependencies:
       - '@babel/core'
       - '@babel/traverse'
@@ -6782,9 +6776,9 @@ snapshots:
       - webpack
       - webpack-cli
 
-  '@nrwl/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)':
+  '@nrwl/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)':
     dependencies:
-      '@nx/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)
+      '@nx/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)
     transitivePeerDependencies:
       - '@babel/core'
       - '@babel/traverse'
@@ -7003,7 +6997,7 @@ snapshots:
       enquirer: 2.3.6
       ignore: 5.3.1
       nx: 18.3.4
-      semver: 7.6.0
+      semver: 7.6.1
       tmp: 0.2.3
       tslib: 2.6.2
       yargs-parser: 21.1.1
@@ -7079,7 +7073,7 @@ snapshots:
       babel-plugin-transform-typescript-metadata: 0.3.2(@babel/core@7.24.5)(@babel/traverse@7.24.5)
       chalk: 4.1.2
       columnify: 1.6.0
-      detect-port: 1.5.1
+      detect-port: 1.6.1
       fast-glob: 3.2.7
       fs-extra: 11.2.0
       ignore: 5.3.1
@@ -7088,7 +7082,7 @@ snapshots:
       npm-package-arg: 11.0.1
       npm-run-path: 4.0.1
       ora: 5.3.0
-      semver: 7.6.0
+      semver: 7.6.1
       source-map-support: 0.5.19
       ts-node: 10.9.1(@types/node@20.12.5)(typescript@5.3.3)
       tsconfig-paths: 4.2.0
@@ -7122,7 +7116,7 @@ snapshots:
       babel-plugin-transform-typescript-metadata: 0.3.2(@babel/core@7.24.5)(@babel/traverse@7.24.5)
       chalk: 4.1.2
       columnify: 1.6.0
-      detect-port: 1.5.1
+      detect-port: 1.6.1
       fast-glob: 3.2.7
       fs-extra: 11.2.0
       ignore: 5.3.1
@@ -7131,7 +7125,7 @@ snapshots:
       npm-package-arg: 11.0.1
       npm-run-path: 4.0.1
       ora: 5.3.0
-      semver: 7.6.0
+      semver: 7.6.1
       source-map-support: 0.5.19
       ts-node: 10.9.1(@types/node@20.12.5)(typescript@5.4.4)
       tsconfig-paths: 4.2.0
@@ -7189,10 +7183,10 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)':
+  '@nx/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)':
     dependencies:
       '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
-      '@nrwl/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)
+      '@nrwl/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.3.3)(webpack@5.91.0)
       '@nx/devkit': 18.3.4(nx@18.3.4)
       '@nx/eslint': 18.3.4(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(nx@18.3.4)
       '@nx/js': 18.3.4(@babel/traverse@7.24.5)(@types/node@20.12.5)(nx@18.3.4)(typescript@5.3.3)
@@ -7206,8 +7200,8 @@ snapshots:
       file-loader: 6.2.0(webpack@5.91.0)
       fs-extra: 11.2.0
       ignore: 5.3.1
-      next: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0)
-      semver: 7.6.0
+      next: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0)
+      semver: 7.6.1
       tslib: 2.6.2
       webpack-merge: 5.10.0
     transitivePeerDependencies:
@@ -7241,10 +7235,10 @@ snapshots:
       - webpack
       - webpack-cli
 
-  '@nx/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)':
+  '@nx/next@18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)':
     dependencies:
       '@babel/plugin-proposal-decorators': 7.24.1(@babel/core@7.24.5)
-      '@nrwl/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)
+      '@nrwl/next': 18.3.4(@babel/core@7.24.5)(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0))(nx@18.3.4)(typescript@5.4.4)(webpack@5.91.0)
       '@nx/devkit': 18.3.4(nx@18.3.4)
       '@nx/eslint': 18.3.4(@babel/traverse@7.24.5)(@types/node@20.12.5)(js-yaml@4.1.0)(nx@18.3.4)
       '@nx/js': 18.3.4(@babel/traverse@7.24.5)(@types/node@20.12.5)(nx@18.3.4)(typescript@5.4.4)
@@ -7258,8 +7252,8 @@ snapshots:
       file-loader: 6.2.0(webpack@5.91.0)
       fs-extra: 11.2.0
       ignore: 5.3.1
-      next: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0)
-      semver: 7.6.0
+      next: 14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0)
+      semver: 7.6.1
       tslib: 2.6.2
       webpack-merge: 5.10.0
     transitivePeerDependencies:
@@ -7437,7 +7431,7 @@ snapshots:
       '@nx/devkit': 18.3.4(nx@18.3.4)
       '@nx/js': 18.3.4(@babel/traverse@7.24.5)(@types/node@20.12.5)(nx@18.3.4)(typescript@5.3.3)
       chalk: 4.1.2
-      detect-port: 1.5.1
+      detect-port: 1.6.1
       http-server: 14.1.1
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -7458,7 +7452,7 @@ snapshots:
       '@nx/devkit': 18.3.4(nx@18.3.4)
       '@nx/js': 18.3.4(@babel/traverse@7.24.5)(@types/node@20.12.5)(nx@18.3.4)(typescript@5.4.4)
       chalk: 4.1.2
-      detect-port: 1.5.1
+      detect-port: 1.6.1
       http-server: 14.1.1
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -7498,8 +7492,8 @@ snapshots:
       postcss-import: 14.1.0(postcss@8.4.38)
       postcss-loader: 6.2.1(postcss@8.4.38)(webpack@5.91.0)
       rxjs: 7.8.1
-      sass: 1.76.0
-      sass-loader: 12.6.0(sass@1.76.0)(webpack@5.91.0)
+      sass: 1.77.0
+      sass-loader: 12.6.0(sass@1.77.0)(webpack@5.91.0)
       source-map-loader: 3.0.2(webpack@5.91.0)
       style-loader: 3.3.4(webpack@5.91.0)
       stylus: 0.59.0
@@ -7565,8 +7559,8 @@ snapshots:
       postcss-import: 14.1.0(postcss@8.4.38)
       postcss-loader: 6.2.1(postcss@8.4.38)(webpack@5.91.0)
       rxjs: 7.8.1
-      sass: 1.76.0
-      sass-loader: 12.6.0(sass@1.76.0)(webpack@5.91.0)
+      sass: 1.77.0
+      sass-loader: 12.6.0(sass@1.77.0)(webpack@5.91.0)
       source-map-loader: 3.0.2(webpack@5.91.0)
       style-loader: 3.3.4(webpack@5.91.0)
       stylus: 0.59.0
@@ -7742,7 +7736,7 @@ snapshots:
       '@svgr/core': 8.1.0(typescript@5.3.3)
       cosmiconfig: 8.3.6(typescript@5.3.3)
       deepmerge: 4.3.1
-      svgo: 3.2.0
+      svgo: 3.3.0
     transitivePeerDependencies:
       - typescript
 
@@ -7751,7 +7745,7 @@ snapshots:
       '@svgr/core': 8.1.0(typescript@5.4.4)
       cosmiconfig: 8.3.6(typescript@5.4.4)
       deepmerge: 4.3.1
-      svgo: 3.2.0
+      svgo: 3.3.0
     transitivePeerDependencies:
       - typescript
 
@@ -7987,7 +7981,7 @@ snapshots:
       graphemer: 1.4.0
       ignore: 5.3.1
       natural-compare: 1.4.0
-      semver: 7.6.0
+      semver: 7.6.1
       ts-api-utils: 1.3.0(typescript@5.4.4)
     optionalDependencies:
       typescript: 5.4.4
@@ -8034,7 +8028,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.3
-      semver: 7.6.0
+      semver: 7.6.1
       ts-api-utils: 1.3.0(typescript@5.4.4)
     optionalDependencies:
       typescript: 5.4.4
@@ -8050,7 +8044,7 @@ snapshots:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.4.4)
       eslint: 8.57.0
-      semver: 7.6.0
+      semver: 7.6.1
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -8481,7 +8475,7 @@ snapshots:
   browserslist@4.23.0:
     dependencies:
       caniuse-lite: 1.0.30001616
-      electron-to-chromium: 1.4.757
+      electron-to-chromium: 1.4.759
       node-releases: 2.0.14
       update-browserslist-db: 1.0.15(browserslist@4.23.0)
 
@@ -8814,7 +8808,7 @@ snapshots:
       postcss-modules-scope: 3.2.0(postcss@8.4.38)
       postcss-modules-values: 4.0.0(postcss@8.4.38)
       postcss-value-parser: 4.2.0
-      semver: 7.6.0
+      semver: 7.6.1
     optionalDependencies:
       webpack: 5.91.0
 
@@ -8900,7 +8894,7 @@ snapshots:
 
   csstype@3.1.3: {}
 
-  cypress@13.8.1:
+  cypress@13.9.0:
     dependencies:
       '@cypress/request': 3.0.1
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
@@ -8939,7 +8933,7 @@ snapshots:
       process: 0.11.10
       proxy-from-env: 1.0.0
       request-progress: 3.0.0
-      semver: 7.6.0
+      semver: 7.6.1
       supports-color: 8.1.1
       tmp: 0.2.3
       untildify: 4.0.0
@@ -9001,7 +8995,7 @@ snapshots:
 
   detect-node@2.1.0: {}
 
-  detect-port@1.5.1:
+  detect-port@1.6.1:
     dependencies:
       address: 1.2.2
       debug: 4.3.4(supports-color@8.1.1)
@@ -9071,7 +9065,7 @@ snapshots:
     dependencies:
       jake: 10.9.1
 
-  electron-to-chromium@1.4.757: {}
+  electron-to-chromium@1.4.759: {}
 
   emittery@0.13.1: {}
 
@@ -9087,7 +9081,7 @@ snapshots:
     dependencies:
       once: 1.4.0
 
-  enhanced-resolve@5.16.0:
+  enhanced-resolve@5.16.1:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.2.1
@@ -9457,7 +9451,7 @@ snapshots:
       minimatch: 3.1.2
       node-abort-controller: 3.1.1
       schema-utils: 3.3.0
-      semver: 7.6.0
+      semver: 7.6.1
       tapable: 2.2.1
       typescript: 5.3.3
       webpack: 5.91.0
@@ -9474,7 +9468,7 @@ snapshots:
       minimatch: 3.1.2
       node-abort-controller: 3.1.1
       schema-utils: 3.3.0
-      semver: 7.6.0
+      semver: 7.6.1
       tapable: 2.2.1
       typescript: 5.4.4
       webpack: 5.91.0
@@ -9491,7 +9485,7 @@ snapshots:
       minimatch: 3.1.2
       node-abort-controller: 3.1.1
       schema-utils: 3.3.0
-      semver: 7.6.0
+      semver: 7.6.1
       tapable: 2.2.1
       typescript: 5.3.3
       webpack: 5.90.1
@@ -9937,7 +9931,7 @@ snapshots:
       '@babel/parser': 7.24.5
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
-      semver: 7.6.0
+      semver: 7.6.1
     transitivePeerDependencies:
       - supports-color
 
@@ -10263,7 +10257,7 @@ snapshots:
       jest-util: 29.7.0
       natural-compare: 1.4.0
       pretty-format: 29.7.0
-      semver: 7.6.0
+      semver: 7.6.1
     transitivePeerDependencies:
       - supports-color
 
@@ -10498,10 +10492,6 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lru-cache@6.0.0:
-    dependencies:
-      yallist: 4.0.0
-
   magic-string@0.30.0:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
@@ -10518,7 +10508,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.6.0
+      semver: 7.6.1
 
   make-error@1.3.6: {}
 
@@ -10637,7 +10627,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.76.0):
+  next@14.2.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.0):
     dependencies:
       '@next/env': 14.2.3
       '@swc/helpers': 0.5.5
@@ -10658,7 +10648,7 @@ snapshots:
       '@next/swc-win32-arm64-msvc': 14.2.3
       '@next/swc-win32-ia32-msvc': 14.2.3
       '@next/swc-win32-x64-msvc': 14.2.3
-      sass: 1.76.0
+      sass: 1.77.0
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
@@ -10694,7 +10684,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 3.0.0
-      semver: 7.6.0
+      semver: 7.6.1
       validate-npm-package-name: 5.0.1
 
   npm-run-path@4.0.1:
@@ -10732,7 +10722,7 @@ snapshots:
       npm-run-path: 4.0.1
       open: 8.4.2
       ora: 5.3.0
-      semver: 7.6.0
+      semver: 7.6.1
       string-width: 4.2.3
       strong-log-transformer: 2.1.0
       tar-stream: 2.2.0
@@ -10782,7 +10772,7 @@ snapshots:
       npm-run-path: 4.0.1
       open: 8.4.2
       ora: 5.3.0
-      semver: 7.6.0
+      semver: 7.6.1
       string-width: 4.2.3
       strong-log-transformer: 2.1.0
       tar-stream: 2.2.0
@@ -11025,7 +11015,7 @@ snapshots:
       cosmiconfig: 7.1.0
       klona: 2.0.6
       postcss: 8.4.38
-      semver: 7.6.0
+      semver: 7.6.1
       webpack: 5.91.0
 
   postcss-merge-longhand@6.0.5(postcss@8.4.38):
@@ -11158,7 +11148,7 @@ snapshots:
     dependencies:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
-      svgo: 3.2.0
+      svgo: 3.3.0
 
   postcss-unique-selectors@6.0.4(postcss@8.4.38):
     dependencies:
@@ -11392,15 +11382,15 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass-loader@12.6.0(sass@1.76.0)(webpack@5.91.0):
+  sass-loader@12.6.0(sass@1.77.0)(webpack@5.91.0):
     dependencies:
       klona: 2.0.6
       neo-async: 2.6.2
       webpack: 5.91.0
     optionalDependencies:
-      sass: 1.76.0
+      sass: 1.77.0
 
-  sass@1.76.0:
+  sass@1.77.0:
     dependencies:
       chokidar: 3.6.0
       immutable: 4.3.5
@@ -11442,9 +11432,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.6.0:
-    dependencies:
-      lru-cache: 6.0.0
+  semver@7.6.1: {}
 
   send@0.18.0:
     dependencies:
@@ -11725,7 +11713,7 @@ snapshots:
       methods: 1.1.2
       mime: 2.6.0
       qs: 6.12.1
-      semver: 7.6.0
+      semver: 7.6.1
     transitivePeerDependencies:
       - supports-color
 
@@ -11752,7 +11740,7 @@ snapshots:
 
   svg-parser@2.0.4: {}
 
-  svgo@3.2.0:
+  svgo@3.3.0:
     dependencies:
       '@trysound/sax': 0.2.0
       commander: 7.2.0
@@ -11858,7 +11846,7 @@ snapshots:
       json5: 2.2.3
       lodash.memoize: 4.1.2
       make-error: 1.3.6
-      semver: 7.6.0
+      semver: 7.6.1
       typescript: 5.4.4
       yargs-parser: 21.1.1
     optionalDependencies:
@@ -11869,9 +11857,9 @@ snapshots:
   ts-loader@9.5.1(typescript@5.3.3)(webpack@5.91.0):
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.6.1
       source-map: 0.7.4
       typescript: 5.3.3
       webpack: 5.91.0
@@ -11879,9 +11867,9 @@ snapshots:
   ts-loader@9.5.1(typescript@5.4.4)(webpack@5.90.1):
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.6.1
       source-map: 0.7.4
       typescript: 5.4.4
       webpack: 5.90.1
@@ -11889,9 +11877,9 @@ snapshots:
   ts-loader@9.5.1(typescript@5.4.4)(webpack@5.91.0):
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       micromatch: 4.0.5
-      semver: 7.6.0
+      semver: 7.6.1
       source-map: 0.7.4
       typescript: 5.4.4
       webpack: 5.91.0
@@ -11972,13 +11960,13 @@ snapshots:
   tsconfig-paths-webpack-plugin@4.0.0:
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       tsconfig-paths: 4.2.0
 
   tsconfig-paths-webpack-plugin@4.1.0:
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       tsconfig-paths: 4.2.0
 
   tsconfig-paths@4.2.0:
@@ -12182,7 +12170,7 @@ snapshots:
       acorn-import-assertions: 1.9.0(acorn@8.11.3)
       browserslist: 4.23.0
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       es-module-lexer: 1.5.2
       eslint-scope: 5.1.1
       events: 3.3.0
@@ -12213,7 +12201,7 @@ snapshots:
       acorn-import-assertions: 1.9.0(acorn@8.11.3)
       browserslist: 4.23.0
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.16.0
+      enhanced-resolve: 5.16.1
       es-module-lexer: 1.5.2
       eslint-scope: 5.1.1
       events: 3.3.0
@@ -12290,8 +12278,6 @@ snapshots:
   y18n@5.0.8: {}
 
   yallist@3.1.1: {}
-
-  yallist@4.0.0: {}
 
   yaml@1.10.2: {}
 
