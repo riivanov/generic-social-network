@@ -6,7 +6,6 @@
     "baseUrl": "./",
     "declaration": true,
     "emitDecoratorMetadata": true,
-    "exclude": ["src/client"],
     "experimentalDecorators": true,
     //   "forceConsistentCasingInFileNames": false,
     "incremental": true,
