@@ -1,8 +1,10 @@
 proj
 app
 server
+server/config
 auth
 layout
+doc
 
 <type>(<scope>): <short summary>
   │       │             │
