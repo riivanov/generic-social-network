@@ -2,6 +2,7 @@ proj
 app
 server
 server/config
+server/auth
 auth
 layout
 doc
