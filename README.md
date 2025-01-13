@@ -8,6 +8,7 @@ As a conveniece the Linux commands for installing NVM/Node are provided. If you'
 
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
 nvm install --lts
 nvm use --lts
 node --version # 20.11.0
@@ -18,6 +19,14 @@ npm --version # 10.2.4
 
 ```
 curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=10.0.0 sh -
+source ~/.bashrc
+```
+
+## Clone the repo
+
+```
+git clone https://github.com/riivanov/generic-social-network.git  # Clones to current directory `pwd`
+cd ./generic-social-network
 ```
 
 ## To run the server
