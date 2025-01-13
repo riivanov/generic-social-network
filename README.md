@@ -24,8 +24,9 @@ source ~/.bashrc
 
 ## Clone the repo
 
-```
-git clone https://github.com/riivanov/generic-social-network.git  # Clones to current directory `pwd`
+```  
+# Clones to current directory `pwd`
+git clone https://github.com/riivanov/generic-social-network.git
 cd ./generic-social-network
 ```
 
