@@ -1,3 +1,4 @@
+import { User } from '@lib/entity/User';
 import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
@@ -9,7 +10,7 @@ export const AppDataSource = new DataSource({
   database: 'gsn',
   synchronize: true,
   logging: true,
-  entities: [],
+  entities: [User],
   subscribers: [],
   migrations: [],
 });
