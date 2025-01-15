@@ -30,13 +30,15 @@ pnpm i -g jest
 
 - Install postgres
 ```
-sudo pacman -S postgresql
+sudo pacman -Syyu postgresql --noconfirm
 ```
 
 - Configure postgres
 ```
 sudo -u postgres initdb -D /var/lib/postgres/data
 # Input password test
+sudo systemctl start postgresql.service
+sudo systemctl enable postgresql.service
 sudo -u postgres createuser -P -s test
 sudo -u postgres createdb gsn
 ```
