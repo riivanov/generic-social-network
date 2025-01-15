@@ -42,9 +42,6 @@
     "start:prod": {
       "command": "node dist/main"
     },
-    "test": {
-      "command": "jest"
-    },
     "test:cov": {
       "command": "jest --coverage"
     },

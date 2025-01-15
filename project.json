@@ -1,5 +1,7 @@
 {
   "name": "generic-social-network",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "title": "generic-social-network",
   "targets": {
     "app": {
       "command": "nx dev client"
@@ -13,9 +15,11 @@
     "server": {
       "command": "nx dev server"
     },
+    "test" : {
+      "command": "nx test server"
+    },
     "undefined": {
       "command": "nx server"
     }
-  },
-  "title": "generic-social-network"
+  }
 }

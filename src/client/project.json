@@ -1,7 +1,7 @@
 {
   "name": "client",
-  "title": "client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "title": "client",
   "targets": {
     "undefined": {
       "command": "nx dev client"
