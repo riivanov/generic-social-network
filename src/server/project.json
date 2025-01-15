@@ -54,9 +54,6 @@
     },
     "test:e2e": {
       "command": "jest --config ./test/jest-e2e.json"
-    },
-    "test:watch": {
-      "command": "jest --watch"
     }
   }
 }
