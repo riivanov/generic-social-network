@@ -34,7 +34,11 @@
       "command": "nest start"
     },
     "start:debug": {
-      "command": "nest start --debug --watch"
+      "command": "nest start --debug --watch",
+      "options": {
+        "exclude": "client",
+        "config": "./src/server/nest-cli.json"
+      }
     },
     "start:dev": {
       "command": "nest start --watch"
