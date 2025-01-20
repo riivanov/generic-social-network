@@ -2,19 +2,11 @@
 
 import { useEffect } from "react";
 import styles from "./page.module.scss";
+import { APIService } from "app/services/api.service";
 
 export default function Login() {
-  // const c = 1;
   useEffect(() => {
-    async function getPeople() {
-      // call facade / service to make API call
-      // supabase ? make my own API?
-      const url = `https://swapi.dev/api/people/2`;
-      const res = await fetch(url);
-      console.log(await res.json());
-    }
-
-    getPeople()
+    APIService.instance.fetchPeople();
 
     return () => {}
   }, []);
