@@ -5,6 +5,6 @@
   "entryFile": "../dist/server/src/main.js",
   "compilerOptions": {
     "deleteOutDir": true,
-    "tsConfigPath": "./src/server/tsconfig.json"
+    "tsConfigPath": "./tsconfig.json"
   }
 }

@@ -33,10 +33,22 @@
   },
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
-  },
+    "test:watch": "jest --watch",
+    "server": "npm run dev",
+    "dev": "npm run build && nest start --watch --exclude ../client --config ./nest-cli.json",
+    "build": "rm -rf ./dist && nest build --config ./nest-cli.json",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "start": "nest start",
+    "start:debug": "nest start --debug --watch --exclude ../client --config ./nest-cli.json",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
   "license": "MIT",
   "name": "server",
   "packageManager": "pnpm@9.0.6",
   "version": "0.2.0"
+  }
 }

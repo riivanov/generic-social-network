@@ -8,5 +8,11 @@
     "next": "^14.2.3",
     "nx": "^18.3.4"
   },
+  "scripts": {
+    "clean": "rm -rf ./src/client/node_modules/ ./src/server/node_modules/ ./node_modules/",
+    "client": "cd ./src/client && npm run client",
+    "server": "cd ./src/server && npm run server",
+    "test": "nx test server"
+  },
   "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394"
 }
