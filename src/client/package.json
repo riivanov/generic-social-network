@@ -16,7 +16,8 @@
   "scripts": {
     "client": "npm run dev",
     "dev": "next dev",
-    "e2e": "cypress open --e2e --browser chromium"
+    "e2e": "cypress run --browser chromium --headless --spec",
+    "e2e:interactive": "cypress open --e2e --browser chromium"
   },
   "packageManager": "pnpm@9.0.6",
   "version": "0.2.0"
