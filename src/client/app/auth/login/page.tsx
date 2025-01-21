@@ -1,14 +1,15 @@
 "use client";
 
+import { APIService } from "app/services/api.service";
+import Link from "next/link";
 import { useEffect } from "react";
 import styles from "./page.module.scss";
-import { APIService } from "app/services/api.service";
 
-export default function Login() {
+export default function LoginComponent() {
   useEffect(() => {
     APIService.instance.fetchPeople();
 
-    return () => {}
+    return () => {};
   }, []);
 
   function clicked() {
@@ -17,15 +18,17 @@ export default function Login() {
 
   return (
     <>
-      <div className={styles.container}>
-        <form className={styles.form}>
-          {/* TODO(auth): custom input field component */}
-          <label>Username:</label>
-          <input id="user" className="user" type="text" />
-          <label>Password:</label>
-          <input id="pass" className="pass" type="password" />
-        </form>
-        <button onClick={clicked}>Login</button>
+      <form className={styles.form}>
+        {/* TODO(auth): custom input field component */}
+        <label>E-mail:</label>
+        <input id="user" className="user" type="text" />
+        <label>Password:</label>
+        <input id="pass" className="pass" type="password" />
+        <Link href="/auth/forgot">Forgot your password?</Link>
+      </form>
+      <button onClick={clicked}>Login</button>
+      <div className="register">
+        Need an account?<Link href="/auth/register">Register</Link>
       </div>
     </>
   );

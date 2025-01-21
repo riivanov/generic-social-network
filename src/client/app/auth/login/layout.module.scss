@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  width: 99vw;
+  align-items: center;
+  justify-content: center;
+
+  .formRegisterContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
