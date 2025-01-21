@@ -9,14 +9,14 @@
     "@nx/next": "^18.3.4",
     "@types/node": "20.12.5",
     "@types/react": "^18.2.74",
-    "cypress": "^13.8.0",
+    "cypress": "^14.0.0",
     "nx": "^18.3.3",
     "typescript": "5.4.4"
   },
   "scripts": {
     "client": "npm run dev",
     "dev": "next dev",
-    "cypress": "cypress open --e2e --browser chromium"
+    "e2e": "cypress open --e2e --browser chromium"
   },
   "packageManager": "pnpm@9.0.6",
   "version": "0.2.0"
