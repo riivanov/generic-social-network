@@ -10,8 +10,10 @@
 .form {
   display: flex;
   flex-direction: column;
-  .user {
+  .eMail {
+    padding-bottom: 1rem;
   }
-  .pass {
+  .forgot {
+    padding-bottom: 1rem;
   }
 }

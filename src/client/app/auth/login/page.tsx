@@ -6,6 +6,7 @@ import { APIService } from "app/services/api.service";
 import Link from "next/link";
 import { useEffect } from "react";
 import styles from "./page.module.scss";
+import { Button, TextField } from "@mui/material";
 
 export default function LoginComponent() {
   useEffect(() => {
@@ -25,14 +26,11 @@ export default function LoginComponent() {
         <p className={styles.label}>Login to GSN</p>
       </div>
       <form className={styles.form}>
-        {/* TODO(auth): custom input field component */}
-        <label>E-mail:</label>
-        <input id="user" className="user" type="text" />
-        <label>Password:</label>
-        <input id="pass" className="pass" type="password" />
-        <Link href="/auth/forgot">Forgot your password?</Link>
+        <TextField className={styles.eMail} label="E-mail" variant="outlined"></TextField>
+        <TextField className={styles.password} label="Password" type="password" variant='outlined'></TextField>
+        <Link className={styles.forgot} href="/auth/forgot">Forgot your password?</Link>
       </form>
-      <button onClick={clicked}>Login</button>
+      <Button variant="contained" onClick={clicked}>Login</Button>
       <div className="register">
         Need an account?<Link href="/auth/register">Register</Link>
       </div>
