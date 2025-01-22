@@ -1,5 +1,7 @@
 "use client";
 
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { APIService } from "app/services/api.service";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -18,6 +20,10 @@ export default function LoginComponent() {
 
   return (
     <>
+      <div className={styles.iconLabel}>
+        <FontAwesomeIcon icon={faUsers} />
+        <p className={styles.label}>Login to GSN</p>
+      </div>
       <form className={styles.form}>
         {/* TODO(auth): custom input field component */}
         <label>E-mail:</label>
