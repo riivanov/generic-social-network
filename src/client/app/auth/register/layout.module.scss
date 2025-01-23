@@ -1,0 +1,11 @@
+.verticalContainer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  .horizontalContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

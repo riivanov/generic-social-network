@@ -1,3 +1,11 @@
+.createAccountContainer {
+  display: flex;
+  justify-content: center;
+  .createAccount {
+    display: flex;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
