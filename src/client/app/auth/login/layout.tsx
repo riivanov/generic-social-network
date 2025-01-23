@@ -1,7 +1,7 @@
 import styles from "./layout.module.scss";
 import LoginComponent from "./page";
 
-export default function Login() {
+export default function LoginLayout() {
   return (
     <>
       <div className={styles.container}>
