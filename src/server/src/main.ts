@@ -9,7 +9,7 @@ const logger = new ConsoleLogger('app', {
   timestamp: true,
 });
 
-const port = 3000;
+const port = 3001;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
