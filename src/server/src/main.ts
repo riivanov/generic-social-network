@@ -18,24 +18,24 @@ async function bootstrap() {
 }
 bootstrap();
 
-AppDataSource.initialize()
-  .then(async () => {
-    console.log(
-      'Inserting a new user into the database...',
-    );
-    // const user = {"firstName": "Joe", "lastName": "Blow", "age": 37 };
-    const user = new User();
-    user.username = 'Joe';
-    user.password = 'password';
-    await AppDataSource.manager.save(user);
-    console.log('Saved a new user with id: ' + user.id);
+new AppDataSource().initialize()
+  // .then(async () => {
+  //   console.log(
+  //     'Inserting a new user into the database...',
+  //   );
+  //   // const user = {"firstName": "Joe", "lastName": "Blow", "age": 37 };
+  //   const user = new User();
+  //   user.username = 'Joe';
+  //   user.password = 'password';
+  //   await AppDataSource.manager.save(user);
+  //   console.log('Saved a new user with id: ' + user.id);
 
-    console.log('Loading users from the database...');
-    const users = await AppDataSource.manager.find(User);
-    console.log('Loaded users: ', users);
+  //   console.log('Loading users from the database...');
+  //   const users = await AppDataSource.manager.find(User);
+  //   console.log('Loaded users: ', users);
 
-    console.log(
-      'Here you can setup and run express / fastify / any other framework.',
-    );
-  })
+  //   console.log(
+  //     'Here you can setup and run express / fastify / any other framework.',
+  //   );
+  // })
   .catch((error) => console.log(error));
