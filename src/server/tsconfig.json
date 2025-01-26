@@ -3,6 +3,7 @@
   "exclude": ["node_modules", "./dist"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "baseUrl": "./",
     "declaration": true,
     "emitDecoratorMetadata": true,
@@ -20,7 +21,7 @@
     //   "strictNullChecks": false,
     "target": "ES2021",
     "paths": {
-      "@lib/*": ["../lib/*"],
+      "@lib/*": ["../lib/*"]
     }
   }
 }
