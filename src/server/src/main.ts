@@ -18,7 +18,7 @@ async function bootstrap() {
 }
 bootstrap();
 
-new AppDataSource().initialize()
+AppDataSource.initialize()
   // .then(async () => {
   //   console.log(
   //     'Inserting a new user into the database...',
