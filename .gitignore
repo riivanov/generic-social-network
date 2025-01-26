@@ -3,3 +3,6 @@ node_modules/
 .next
 .nx
 tsconfig.tsbuildinfo
+*.js
+*.js.map
+*.d.ts
