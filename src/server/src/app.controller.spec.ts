@@ -22,7 +22,11 @@ describe('AppController', () => {
       );
     });
 
+    //
     // CRUD routes for User
+    //
+
+    // Create user
     it('/api/v1/user', () => {
       expect.assertions(1);
       expect(appController.createUser()).toStrictEqual({
@@ -30,5 +34,7 @@ describe('AppController', () => {
         password: 'password',
       });
     });
+
+    // Read user
   });
 });
