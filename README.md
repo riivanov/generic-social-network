@@ -39,7 +39,7 @@ sudo -u postgres initdb -D /var/lib/postgres/data
 # Input password test
 sudo systemctl start postgresql.service
 sudo systemctl enable postgresql.service
-sudo -u postgres createuser -P -s test
+sudo -u postgres createuser -P -s test # password: test
 sudo -u postgres createdb gsn
 ```
 
@@ -54,16 +54,17 @@ cd ./generic-social-network
 ## To run the server
 
 
-- Install dependencies in node_modules and run the server the verbose way.
+- Install dependencies in node_modules and run the server
 
 ```
 pnpm i
-npx nx dev server
+pnpm run server
 ```
 
-- Optionally install `nx` globally and run the shortcut to the server.
+## To run the client
+
+- In a seperate terminal run the front-end
 
 ```
-pnpm i nx -g
-nx
+pnpm run client
 ```
