@@ -26,7 +26,9 @@
     "typescript": "5.4.4"
   },
   "scripts": {
-    "client": "npm run dev",
+    "prestart": "corepack enable",
+    "start": "npm run dev",
+    "client": "npm run prestart && npm run dev",
     "dev": "next dev",
     "e2e": "cypress run --browser chromium --headless --spec",
     "e2e:interactive": "cypress open --e2e --browser chromium"
