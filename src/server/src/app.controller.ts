@@ -11,6 +11,7 @@ import { AuthService } from './auth/auth.service';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { UsersService } from './users/users.service';
 import { User } from '@lib/entity/User';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Controller('/api/v1/')
 export class AppController {
@@ -40,6 +41,12 @@ export class AppController {
   @Post('auth/login')
   async login(@Request() req) {
     return this.svcAuth.login(req.user);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/profile')
+  async getProfile(@Request() req) {
+    return req.user
   }
 
   @UseGuards(LocalAuthGuard)
