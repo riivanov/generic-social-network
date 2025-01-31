@@ -10,8 +10,13 @@ export class UsersService {
   ): Promise<User | undefined> {
     return AppDataSource.manager.findOne(User, {
       where: {
-        username: 'Joe',
+        username
       },
     });
+  }
+
+  async createUser(user: Partial<User>) {
+    const newUser = AppDataSource.manager.create(User, user);
+    return AppDataSource.manager.save(newUser);
   }
 }
