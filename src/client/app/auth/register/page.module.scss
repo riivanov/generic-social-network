@@ -1,12 +1,31 @@
 .createAccountContainer {
   display: flex;
   justify-content: center;
-  .createAccount {
-    display: flex;
-  }
 }
 
 .form {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  flex: 1 0 100%;
+
+  .createAccount {
+    display: flex;
+  }
+  .eMail {
+    flex: 0 1 12.5%;
+  }
+  .username {
+    flex: 0 1 12.5%;
+  }
+  .password {
+    flex: 0 1 12.5%;
+  }
+  .continue {
+    flex: 0 0 5%;
+  }
+  .haveAccount {
+    padding: 1rem 0 1rem 0;
+    text-decoration: none;
+  }
 }

@@ -31,8 +31,8 @@ export default function LoginComponent() {
         <Link className={styles.forgot} href="/auth/forgot">Forgot your password?</Link>
       </form>
       <Button variant="contained" onClick={clicked}>Login</Button>
-      <div className="register">
-        Need an account?<Link href="/auth/register">Register</Link>
+      <div className={styles.needAccount}>
+        Need an account? <Link className={styles.register} href="/auth/register">Register</Link>
       </div>
     </>
   );
