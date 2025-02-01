@@ -1,6 +1,8 @@
 "use client";
 
 import { Button, Link, TextField } from "@mui/material";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import styles from "./page.module.scss";
 
 export default function RegisterComponent() {
@@ -8,9 +10,35 @@ export default function RegisterComponent() {
     console.log("clicked");
   }
 
+  const validationSchema = yup.object({
+    email: yup
+      .string()
+      .email("Enter a valid email")
+      .required("Email is required"),
+    username: yup.string().required("Username is required"),
+    password: yup
+      .string()
+      .min(8, "Password has to be at least 8 characters long")
+      .required("Password is required"),
+  });
+
+  const initialValues = {
+    email: "",
+    username: "",
+    password: "",
+  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
     <>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
         <h3 className={styles.createAccountContainer}>
           <p className={styles.createAccount}>Create an account</p>
         </h3>
@@ -19,24 +47,45 @@ export default function RegisterComponent() {
          */}
         <TextField
           className={styles.eMail}
-          label="E-Mail"
           variant="outlined"
+          id="email"
+          name="email"
+          label="Email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         ></TextField>
         {/* TODO:
             - websocket to check if username already exists without page navigation / reload
          */}
         <TextField
           className={styles.username}
-          label="Username"
           variant="outlined"
+          id="username"
+          name="username"
+          label="Username"
+          value={formik.values.username}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.username && Boolean(formik.errors.username)}
+          helperText={formik.touched.username && formik.errors.username}
         ></TextField>
         {/* TODO:
             - password strength checker with red/yellow/green indicator
          */}
         <TextField
           className={styles.password}
-          label="Password"
           variant="outlined"
+          id="password"
+          name="password"
+          label="Password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
           type="password"
         ></TextField>
         <Button
