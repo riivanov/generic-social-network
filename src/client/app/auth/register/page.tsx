@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Link, TextField } from "@mui/material";
+import PasswordStrengthComponent from "app/components/password-strength/password-strength";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import styles from "./page.module.scss";
@@ -87,10 +88,13 @@ export default function RegisterComponent() {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
           type="password"
-        ></TextField>
+        >
+        </TextField>
+        <PasswordStrengthComponent password={formik.values.password} />
         <Button
           className={styles.continue}
           variant="contained"
+          type="submit"
           onClick={handleContinueClick}
         >
           Continue
