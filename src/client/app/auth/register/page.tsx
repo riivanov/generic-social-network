@@ -73,9 +73,6 @@ export default function RegisterComponent() {
           error={formik.touched.username && Boolean(formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
         ></TextField>
-        {/* TODO:
-            - password strength checker with red/yellow/green indicator
-         */}
         <TextField
           className={styles.password}
           variant="outlined"
@@ -88,8 +85,7 @@ export default function RegisterComponent() {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
           type="password"
-        >
-        </TextField>
+        ></TextField>
         <PasswordStrengthComponent password={formik.values.password} />
         <Button
           className={styles.continue}
