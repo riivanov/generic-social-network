@@ -13,6 +13,7 @@
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
+    "socket.io": "^4.8.1",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
@@ -44,6 +45,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "server": "npm run dev",
+    "server:debug": "npm run start:debug",
     "dev": "npm run build && nest start --watch --exclude ../client --config ./nest-cli.json",
     "build": "rm -rf ./dist && nest build --config ./nest-cli.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

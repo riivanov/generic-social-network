@@ -5,10 +5,12 @@ import PasswordStrengthComponent from "app/components/password-strength/password
 import { useFormik } from "formik";
 import * as yup from "yup";
 import styles from "./page.module.scss";
+import { SocketService } from "app/services/socket.service";
 
 export default function RegisterComponent() {
   function handleContinueClick() {
     console.log("clicked");
+    SocketService.instance.sendPing();
   }
 
   const validationSchema = yup.object({
