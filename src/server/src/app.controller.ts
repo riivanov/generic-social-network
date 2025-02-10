@@ -1,3 +1,4 @@
+import { User } from '@lib/entity/User';
 import {
   Controller,
   Get,
@@ -8,17 +9,16 @@ import {
 import { Request as Req } from 'express';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { UsersService } from './users/users.service';
-import { User } from '@lib/entity/User';
-import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Controller('/api/v1/')
 export class AppController {
   constructor(
     private readonly svcApp: AppService,
     private svcAuth: AuthService,
-    private svcUser: UsersService
+    private svcUser: UsersService,
   ) {}
 
   @Get()
@@ -33,7 +33,9 @@ export class AppController {
   // Create
   @Post('user')
   createUser(@Request() req: Req) {
-    return this.svcUser.createUser(req.body as Partial<User>);
+    return this.svcUser.createUser(
+      req.body as Partial<User>,
+    );
   }
 
   // Read
@@ -46,7 +48,7 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('/profile')
   async getProfile(@Request() req) {
-    return req.user
+    return req.user;
   }
 
   @UseGuards(LocalAuthGuard)
