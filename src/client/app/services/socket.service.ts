@@ -1,9 +1,8 @@
 import io from "socket.io-client";
 
 export class SocketService {
-  readonly #socket = io("http://localhost:3005", {
+  public readonly socket = io("http://localhost:3005", {
     withCredentials: true,
-
   });
 
   static #instance: SocketService;
@@ -18,6 +17,10 @@ export class SocketService {
   }
 
   async sendPing() {
-    this.#socket.emit("ping", ['world']);
+    this.socket.emit("ping", ["world"]);
+  }
+
+  isUsernameTaken(username: string) {
+    return this.socket.emit("user:username-taken", username);
   }
 }

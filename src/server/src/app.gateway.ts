@@ -12,7 +12,7 @@ import { Server } from 'socket.io';
 @WebSocketGateway(3005, {
   cors: {
     origin: 'http://localhost:3000',
-    credentials: true
+    credentials: true,
   },
 })
 export class AppGateway

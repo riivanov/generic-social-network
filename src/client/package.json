@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@admandev/socketio-decorator": "^1.2.3",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.1.1",
