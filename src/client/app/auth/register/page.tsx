@@ -1,25 +1,15 @@
 "use client";
 
+import { ServerClientEventNames } from "@lib/socket/event-names";
 import { Button, Link, TextField } from "@mui/material";
 import PasswordStrengthComponent from "app/components/password-strength/password-strength";
 import { SocketService } from "app/services/socket.service";
 import { useFormik } from "formik";
+import { ChangeEvent } from "react";
 import * as yup from "yup";
 import styles from "./page.module.scss";
-import {ServerClientEventNames} from "@lib/socket/event-names"
 
 export default function RegisterComponent() {
-  function handleContinueClick() {
-    console.log("clicked");
-    SocketService.instance
-      .isUsernameTaken(formik.values.username)
-      .on<ServerClientEventNames>("user:is-username-taken", handleIsUsernameTaken);
-  }
-
-  function handleIsUsernameTaken(isTaken: boolean) {
-    console.log("Is username taken", isTaken);
-  }
-
   const validationSchema = yup.object({
     email: yup
       .string()
@@ -45,6 +35,25 @@ export default function RegisterComponent() {
       alert(JSON.stringify(values, null, 2));
     },
   });
+
+  function handleContinueClick() {
+    console.log("clicked");
+  }
+
+  function handleIsUsernameTaken(isTaken: boolean) {
+    console.log("Is username taken", isTaken);
+  }
+
+  function handleUsernameChange(ev: ChangeEvent<HTMLInputElement>) {
+    formik.handleChange(ev);
+
+    SocketService.instance
+      .isUsernameTaken(ev?.target?.value)
+      .once<ServerClientEventNames>(
+        "user:is-username-taken",
+        handleIsUsernameTaken
+      );
+  }
 
   return (
     <>
@@ -77,7 +86,7 @@ export default function RegisterComponent() {
           name="username"
           label="Username"
           value={formik.values.username}
-          onChange={formik.handleChange}
+          onChange={handleUsernameChange}
           onBlur={formik.handleBlur}
           error={formik.touched.username && Boolean(formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
