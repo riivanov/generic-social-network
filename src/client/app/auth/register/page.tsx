@@ -5,7 +5,7 @@ import { Button, Link, TextField } from "@mui/material";
 import PasswordStrengthComponent from "app/components/password-strength/password-strength";
 import { SocketService } from "app/services/socket.service";
 import { useFormik } from "formik";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import * as yup from "yup";
 import styles from "./page.module.scss";
 
@@ -15,7 +15,11 @@ export default function RegisterComponent() {
       .string()
       .email("Enter a valid email")
       .required("Email is required"),
-    username: yup.string().required("Username is required"),
+    username: yup
+      .string()
+      .min(4, "Must be at least 4 characters")
+      .matches(/^[a-zA-Z0-9]+$/, "Cannot contain special characters or spaces")
+      .required("Username is required"),
     password: yup
       .string()
       .min(8, "Password has to be at least 8 characters long")
@@ -36,12 +40,14 @@ export default function RegisterComponent() {
     },
   });
 
+  const [isUsernameTaken, setIsUsernameTaken] = useState(false);
+
   function handleContinueClick() {
     console.log("clicked");
   }
 
   function handleIsUsernameTaken(isTaken: boolean) {
-    console.log("Is username taken", isTaken);
+    setIsUsernameTaken(isTaken);
   }
 
   function handleUsernameChange(ev: ChangeEvent<HTMLInputElement>) {
@@ -88,8 +94,15 @@ export default function RegisterComponent() {
           value={formik.values.username}
           onChange={handleUsernameChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.username && Boolean(formik.errors.username)}
-          helperText={formik.touched.username && formik.errors.username}
+          error={
+            isUsernameTaken ||
+            (formik.touched.username && Boolean(formik.errors.username))
+          }
+          helperText={
+            isUsernameTaken
+              ? "Username is not available"
+              : formik.touched.username && formik.errors.username
+          }
         ></TextField>
         <TextField
           className={styles.password}
