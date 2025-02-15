@@ -1,3 +1,4 @@
+import { ServerClientEventNames } from '@lib/socket/event-names';
 import {
   SubscribeMessage,
   WebSocketGateway,
@@ -17,9 +18,9 @@ export class UserGateway {
 
   @WebSocketServer() io: Server;
 
-  @SubscribeMessage('user:username-taken')
+  @SubscribeMessage<ServerClientEventNames>('user:is-username-taken')
   async isUsernameTaken(client: Socket, payload: string) {
     const isTaken = await this.svcUser.isUsernameTaken(payload);
-    client.emit("user:username-taken", isTaken)
+    client.emit<ServerClientEventNames>("user:is-username-taken", isTaken)
   }
 }

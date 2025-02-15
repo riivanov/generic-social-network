@@ -18,6 +18,9 @@
     "moduleResolution": "node16",
     "noEmit": true,
     "outDir": "./dist",
+    "paths": {
+      "@lib/*": ["../lib/*"]
+    },
     "plugins": [
       {
         "name": "next"

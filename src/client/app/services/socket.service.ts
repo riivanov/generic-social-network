@@ -1,3 +1,4 @@
+import { ServerClientEventNames } from "@lib/socket/event-names";
 import io from "socket.io-client";
 
 export class SocketService {
@@ -21,6 +22,6 @@ export class SocketService {
   }
 
   isUsernameTaken(username: string) {
-    return this.socket.emit("user:username-taken", username);
+    return this.socket.emit<ServerClientEventNames>("user:is-username-taken", username);
   }
 }

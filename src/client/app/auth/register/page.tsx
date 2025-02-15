@@ -6,13 +6,14 @@ import { SocketService } from "app/services/socket.service";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import styles from "./page.module.scss";
+import {ServerClientEventNames} from "@lib/socket/event-names"
 
 export default function RegisterComponent() {
   function handleContinueClick() {
     console.log("clicked");
     SocketService.instance
       .isUsernameTaken(formik.values.username)
-      .on("user:username-taken", handleIsUsernameTaken);
+      .on<ServerClientEventNames>("user:is-username-taken", handleIsUsernameTaken);
   }
 
   function handleIsUsernameTaken(isTaken: boolean) {
