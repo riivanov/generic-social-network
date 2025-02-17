@@ -1,6 +1,6 @@
 "use client";
 
-import { ServerClientEventNames } from "@lib/socket/event-names";
+import { ServerClientEvents } from "@lib/socket/event-names";
 import { Button, Link, TextField } from "@mui/material";
 import PasswordStrengthComponent from "app/components/password-strength/password-strength";
 import { SocketService } from "app/services/socket.service";
@@ -55,7 +55,7 @@ export default function RegisterComponent() {
 
     SocketService.instance
       .isUsernameTaken(ev?.target?.value)
-      .once<ServerClientEventNames>(
+      .once<ServerClientEvents>(
         "user:is-username-taken",
         handleIsUsernameTaken
       );
@@ -82,9 +82,6 @@ export default function RegisterComponent() {
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
         ></TextField>
-        {/* TODO:
-            - websocket to check if username already exists without page navigation / reload
-         */}
         <TextField
           className={styles.username}
           variant="outlined"

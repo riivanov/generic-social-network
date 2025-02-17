@@ -35,4 +35,15 @@ export class UsersService {
     if (num === 0) return false;
     return true;
   }
+
+  async isEmailTaken(email: string) {
+    if (!email) return false;
+
+    const [users, num] = await AppDataSource.manager.findAndCountBy(User, {
+
+    })
+
+    if (num === 0) return false;
+    return true;
+  }
 }
