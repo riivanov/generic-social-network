@@ -12,9 +12,9 @@ export class User {
 
   // @ts-ignore
   @Column()
-  username: string;
+  password: string;
 
   // @ts-ignore
   @Column()
-  password: string;
+  username: string;
 }

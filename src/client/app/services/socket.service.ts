@@ -28,5 +28,7 @@ export class SocketService {
     );
   }
 
-  isEmailTaken(email: string) {}
+  isEmailTaken(email: string) {
+    return this.socket.emit<ServerClientEvents>("user:is-email-taken", email);
+  }
 }

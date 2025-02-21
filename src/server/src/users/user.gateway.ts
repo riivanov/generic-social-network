@@ -20,12 +20,15 @@ export class UserGateway {
 
   @SubscribeMessage<ServerClientEvents>('user:is-username-taken')
   async isUsernameTaken(client: Socket, payload: string) {
+    // TODO: return client call errors 400? if no payload is provided
     const isTaken = await this.svcUser.isUsernameTaken(payload);
     client.emit<ServerClientEvents>("user:is-username-taken", isTaken)
   }
 
   @SubscribeMessage<ServerClientEvents>("user:is-email-taken")
   async isEmailTaken(client: Socket, payload: string) {
-
+    // TODO: return client call errors 400? if no payload is provided
+    const isTaken = await this.svcUser.isEmailTaken(payload)
+    client.emit<ServerClientEvents>("user:is-email-taken", isTaken)
   }
 }

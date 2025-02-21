@@ -41,13 +41,22 @@ export default function RegisterComponent() {
   });
 
   const [isUsernameTaken, setIsUsernameTaken] = useState(false);
+  const [isEmailTaken, setIsEmailTaken] = useState(false);
 
   function handleContinueClick() {
     console.log("clicked");
   }
 
-  function handleIsUsernameTaken(isTaken: boolean) {
-    setIsUsernameTaken(isTaken);
+  function handleEmailChange(ev: ChangeEvent<HTMLInputElement>) {
+    formik.handleChange(ev);
+
+    SocketService.instance
+      .isEmailTaken(ev?.target?.value)
+      .once<ServerClientEvents>("user:is-email-taken", handleIsEmailTaken);
+  }
+
+  function handleIsEmailTaken(isTaken: boolean) {
+    setIsEmailTaken(isTaken);
   }
 
   function handleUsernameChange(ev: ChangeEvent<HTMLInputElement>) {
@@ -59,6 +68,10 @@ export default function RegisterComponent() {
         "user:is-username-taken",
         handleIsUsernameTaken
       );
+  }
+
+  function handleIsUsernameTaken(isTaken: boolean) {
+    setIsUsernameTaken(isTaken);
   }
 
   return (
@@ -77,10 +90,17 @@ export default function RegisterComponent() {
           name="email"
           label="Email"
           value={formik.values.email}
-          onChange={formik.handleChange}
+          onChange={handleEmailChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
+          error={
+            isEmailTaken ||
+            (formik.touched.email && Boolean(formik.errors.email))
+          }
+          helperText={
+            isEmailTaken
+              ? "E-mail is already in use. Use another."
+              : formik.touched.email && formik.errors.email
+          }
         ></TextField>
         <TextField
           className={styles.username}
