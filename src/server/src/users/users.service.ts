@@ -39,9 +39,10 @@ export class UsersService {
   async isEmailTaken(email: string) {
     if (!email) return false;
 
-    const [users, num] = await AppDataSource.manager.findAndCountBy(User, {
-
-    })
+    const [users, num] =
+      await AppDataSource.manager.findAndCountBy(User, {
+        email,
+      });
 
     if (num === 0) return false;
     return true;
