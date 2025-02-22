@@ -86,7 +86,7 @@ export default function RegisterComponent() {
           variant="outlined"
           id="email"
           name="email"
-          label="Email"
+          label="E-mail"
           value={formik.values.email}
           onChange={handleEmailChange}
           onBlur={formik.handleBlur}
