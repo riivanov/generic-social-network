@@ -1,0 +1,2 @@
+- add GraphQL to server and client
+  - so that I can use the same interfaces as the Domain Objects in the frontend
