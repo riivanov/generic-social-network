@@ -1,7 +1,8 @@
+import { IUser } from "@lib/models/user.interface";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class User {
+export class User implements IUser {
   // @ts-ignore
   @PrimaryGeneratedColumn()
   id: number;
