@@ -22,15 +22,14 @@ export class UserService {
   async createUser(user: IUser) {
     console.log(user);
     const res = await fetch(`${url}/api/v1/user`, {
-      // mode: "no-cors",
       method: "POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
-    });
+    }).then(response => response.json()) as IUser;
 
-    console.log(res)
+    console.log(res);
   }
 }
