@@ -8,6 +8,8 @@ import { useFormik } from "formik";
 import { ChangeEvent, useState } from "react";
 import * as yup from "yup";
 import styles from "./page.module.scss";
+import { IUser } from "@lib/models/user.interface";
+import { UserService } from "app/services/user.service";
 
 export default function RegisterComponent() {
   const validationSchema = yup.object({
@@ -35,16 +37,15 @@ export default function RegisterComponent() {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: handleSubmit,
   });
 
   const [isUsernameTaken, setIsUsernameTaken] = useState(false);
   const [isEmailTaken, setIsEmailTaken] = useState(false);
 
-  function handleContinueClick() {
-    console.log("clicked");
+  function handleSubmit(values: IUser) {
+    console.log(JSON.stringify(values, null, 2), "clicked");
+    UserService.instance.createUser(values);
   }
 
   function handleEmailChange(ev: ChangeEvent<HTMLInputElement>) {
@@ -80,9 +81,6 @@ export default function RegisterComponent() {
         <h3 className={styles.createAccountContainer}>
           <p className={styles.createAccount}>Create an account</p>
         </h3>
-        {/* TODO:
-            - websocket to check if e-mail already exists without page navigation / reload
-         */}
         <TextField
           className={styles.eMail}
           variant="outlined"
@@ -135,12 +133,7 @@ export default function RegisterComponent() {
           type="password"
         ></TextField>
         <PasswordStrengthComponent password={formik.values.password} />
-        <Button
-          className={styles.continue}
-          variant="contained"
-          type="submit"
-          onClick={handleContinueClick}
-        >
+        <Button className={styles.continue} variant="contained" type="submit">
           Continue
         </Button>
         <Link className={styles.haveAccount} href="/auth/login">
