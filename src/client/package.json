@@ -31,14 +31,14 @@
     "nx": "^18.3.3",
     "typescript": "5.4.4"
   },
+  "packageManager": "pnpm@9.0.6",
   "scripts": {
-    "prestart": "corepack enable",
-    "start": "npm run dev",
     "client": "npm run prestart && npm run dev",
     "dev": "next dev",
     "e2e": "cypress run --browser chromium --headless --spec",
-    "e2e:interactive": "cypress open --e2e --browser chromium"
+    "e2e:interactive": "cypress open --e2e --browser chromium",
+    "prestart": "corepack enable",
+    "start": "npm run dev"
   },
-  "packageManager": "pnpm@9.0.6",
   "version": "0.2.0"
 }
