@@ -1,4 +1,4 @@
-import { User } from '@lib/entity/User';
+import { User } from '../../lib/entity/User';
 import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
@@ -8,9 +8,10 @@ export const AppDataSource = new DataSource({
   username: 'test',
   password: 'test',
   database: 'gsn',
-  synchronize: true,
-  logging: true,
+  synchronize: false,
+  logging: false,
   entities: [User],
   subscribers: [],
   migrations: [],
+  migrationsTableName: "custom_migration_table"
 });
