@@ -62,7 +62,6 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "test:watch": "jest --watch",
-    "typeorm": "typeorm-ts-node-commonjs",
     "upgrade:server": "pnpm i @nestjs/core@latest @nestjs/common@latest @nestjs/platform-express@latest @nestjs/testing@latest",
     "version": "0.2.0"
   }

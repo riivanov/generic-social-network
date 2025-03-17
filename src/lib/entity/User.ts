@@ -5,15 +5,15 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class User implements IUser {
   // @ts-ignore
   @PrimaryGeneratedColumn()
-  id: number;
-
-  // @ts-ignore
-  @Column()
-  email: string;
+  id: string;
 
   // @ts-ignore
   @Column()
   password: string;
+
+  // @ts-ignore
+  @Column()
+  email: string;
 
   // @ts-ignore
   @Column()

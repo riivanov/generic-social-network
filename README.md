@@ -28,6 +28,11 @@ source ~/.bashrc
 pnpm i -g jest
 ```
 
+- Install ts-node and typeorm globally for development
+```
+pnpm i -g ts-node typeorm
+```
+
 - Install postgres
 ```
 sudo pacman -Syyu postgresql --noconfirm
@@ -60,6 +65,20 @@ cd ./generic-social-network
 pnpm i
 pnpm run server
 ```
+
+## Migrations
+### Generate migrations
+```
+cd ./src/server
+rm -rf ../lib/entity/User.{js,js.map,d.ts} && typeorm-ts-node-commonjs migration:generate ./migrations/<name> -d ./src/data-source.ts
+```
+
+### To run migrations for the DB in the server directory
+
+```
+typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts
+```
+
 
 ## To run the client
 
