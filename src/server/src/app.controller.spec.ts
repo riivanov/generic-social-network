@@ -41,7 +41,7 @@ describe('AppController', () => {
   // CRUD routes for User
   //
 
-  describe('/api/v1', () => {
+  describe('CRUD /api/v1', () => {
     // Create user
     it('should ceraate a user when /user is called', async () => {
       await AppDataSource.initialize();
@@ -51,7 +51,6 @@ describe('AppController', () => {
         email: 'joe@gmail.com',
       });
       delete user.id; 
-      console.log(user)
       expect(user).toEqual({
         username: 'Joe',
         password: 'password',
