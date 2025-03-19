@@ -2,6 +2,8 @@ import { User } from '@lib/entity/User';
 import {
   Controller,
   Get,
+  HttpException,
+  Param,
   Post,
   Request,
   UseGuards,
@@ -39,6 +41,22 @@ export class AppController {
   }
 
   // Read
+  @Get('user/:id')
+  async getUser(@Param('id') id) {
+    // TODO - when DB uses UUID this will go away
+    const ID = Math.floor(Number(id)) ?? null;
+    if (!ID) throw new HttpException("ID was not a number", 500)
+    
+    const user = await this.svcUser.findOneByID(ID.toString())
+    if (!user) throw new HttpException("User not found", 500)
+
+    return user;
+  }
+
+
+  //
+  // TODO() - move to AuthController.ts
+  //
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {

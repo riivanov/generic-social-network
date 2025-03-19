@@ -14,12 +14,37 @@ export class UsersService {
     });
   }
 
-  async createUser(user: Partial<User>) {
+  async findOneByID(id: string): Promise<User | null> {
+    return AppDataSource.manager.findOne(User, {
+      where: {
+        id,
+      },
+    });
+  }
+
+  async createUser(
+    user: Partial<User>,
+  ): Promise<User | null> {
+    // if (
+    //   await this.isUsernameTaken(user?.username) ||
+    //   await this.isEmailTaken(user?.email)
+    // )
+    //   return null;
+
     const newUser = AppDataSource.manager.create(
       User,
       user,
     );
     return AppDataSource.manager.save(newUser);
+  }
+
+  async getRandomUser() {
+    const user = await AppDataSource.createQueryBuilder(User, 'user')
+      .select()
+      .orderBy('RANDOM()')
+      .getOne();
+    if (!user) return null;
+    return user;
   }
 
   async isUsernameTaken(username: string) {
