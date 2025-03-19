@@ -1,4 +1,4 @@
-import { User } from '@lib/entity/User';
+import { User } from '../../lib/entity/User';
 import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({

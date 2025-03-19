@@ -29,13 +29,7 @@ describe('AppController', () => {
     svcUser = app.get<UsersService>(UsersService);
   });
 
-  describe('root', () => {
-    // it('should return "Hello World!"', () => {
-    // expect(appController.getHello()).toBe(
-    // 'Hello World!',
-    // );
-    // });
-  });
+  describe('root', () => {});
 
   //
   // CRUD routes for User
@@ -50,13 +44,28 @@ describe('AppController', () => {
         password: 'password',
         email: 'joe@gmail.com',
       });
-      delete user.id; 
+      // if (!user) return;
+      delete user.id;
       expect(user).toEqual({
         username: 'Joe',
         password: 'password',
         email: 'joe@gmail.com',
       });
+    });
+
+    it('should read a User from the DB, when GET /api/v1/user/:id is called', async () => {
       await AppDataSource.destroy();
+      await AppDataSource.initialize();
+      const user = await svcUser.getRandomUser();
+      const getUser = await appController.getUser(user?.id);
+      expect(getUser?.id).toBeDefined();
+      expect(getUser?.id).toBeTruthy();
+      expect(getUser?.email).toBeDefined();
+      expect(getUser?.email).toBeTruthy();
+      expect(getUser?.username).toBeDefined();
+      expect(getUser?.username).toBeTruthy();
+      expect(getUser?.password).toBeDefined();
+      expect(getUser?.password).toBeTruthy();
     });
 
     // Read user
