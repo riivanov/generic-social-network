@@ -34,7 +34,7 @@ export class AppController {
 
   // Create
   @Post('user')
-  createUser(@Request() req: Req) {
+  createUser(@Request() req) {
     return this.svcUser.createUser(
       req.body as Partial<User>,
     );

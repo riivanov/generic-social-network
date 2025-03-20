@@ -39,12 +39,14 @@ describe('AppController', () => {
     // Create user
     it('should ceraate a user when /user is called', async () => {
       await AppDataSource.initialize();
-      let user = await svcUser.createUser({
-        username: 'Joe',
-        password: 'password',
-        email: 'joe@gmail.com',
-      });
-      // if (!user) return;
+      const postReq = {
+        body: {
+          username: 'Joe',
+          password: 'password',
+          email: 'joe@gmail.com',
+        },
+      };
+      let user = await appController.createUser(postReq);
       delete user.id;
       expect(user).toEqual({
         username: 'Joe',
@@ -57,7 +59,9 @@ describe('AppController', () => {
       await AppDataSource.destroy();
       await AppDataSource.initialize();
       const user = await svcUser.getRandomUser();
-      const getUser = await appController.getUser(user?.id);
+      const getUser = await appController.getUser(
+        user?.id,
+      );
       expect(getUser?.id).toBeDefined();
       expect(getUser?.id).toBeTruthy();
       expect(getUser?.email).toBeDefined();
