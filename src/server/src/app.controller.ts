@@ -1,6 +1,7 @@
 import { User } from '@lib/entity/User';
 import {
   Controller,
+  Delete,
   Get,
   HttpException,
   Param,
@@ -75,6 +76,31 @@ export class AppController {
       );
 
     return await this.svcUser.updateUser(req.body.user);
+  }
+
+  // Delete
+  @Delete('user/:id')
+  async deleteUser(@Request() req, @Param('id') id: number) {
+
+    if (!id)
+      throw new HttpException('ID was not provided', 400);
+    if (!('user' in req?.body))
+      throw new HttpException(
+        'User was not part of request',
+        400,
+      );
+    if (!('id' in req?.body?.user))
+      throw new HttpException(
+        'ID was not part of user object',
+        400,
+      );
+
+      const user = req?.body?.user;
+
+    return await this.svcUser.deleteUser(
+      user,
+      user?.id
+    );
   }
 
   //

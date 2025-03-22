@@ -1,11 +1,11 @@
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
+import { QueryFailedError } from 'typeorm/error/QueryFailedError';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { AppDataSource } from './data-source';
 import { UsersService } from './users/users.service';
-import { QueryFailedError } from 'typeorm/error/QueryFailedError';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -79,51 +79,73 @@ describe('AppController', () => {
       await AppDataSource.destroy();
       await AppDataSource.initialize();
       let putReq = {
-        "body": {
-          "user": {
-            "id": 1,
-            "password": null,
-            "email": null,
-            "username": null
+        body: {
+          user: {
+            id: 1,
+            password: null,
+            email: null,
+            username: null,
           },
         },
       };
-      await expect(() => appController.updateUser(putReq, 1)).rejects.toThrow(QueryFailedError)
+      await expect(() =>
+        appController.updateUser(putReq, 1),
+      ).rejects.toThrow(QueryFailedError);
       putReq = {
-        "body": {
-          "user": {
-            "id": 1,
-            "password": "password",
-            "email": null,
-            "username": null
+        body: {
+          user: {
+            id: 1,
+            password: 'password',
+            email: null,
+            username: null,
           },
         },
       };
-      await expect(() => appController.updateUser(putReq, 1)).rejects.toThrow(QueryFailedError);
+      await expect(() =>
+        appController.updateUser(putReq, 1),
+      ).rejects.toThrow(QueryFailedError);
       putReq = {
-        "body": {
-          "user": {
-            "id": 1,
-            "password": "password",
-            "email": "joe@gmail.com",
-            "username": null
+        body: {
+          user: {
+            id: 1,
+            password: 'password',
+            email: 'joe@gmail.com',
+            username: null,
           },
         },
       };
-      await expect(() => appController.updateUser(putReq, 1)).rejects.toThrow(QueryFailedError);
+      await expect(() =>
+        appController.updateUser(putReq, 1),
+      ).rejects.toThrow(QueryFailedError);
       const random = await svcUser.getRandomUser();
-      console.log(random);
       putReq = {
         body: {
           user: {
             id: Number(random.id),
-            email: "jstalin@gmail.com",
-            password: "ihatepasswords",
-            username: "jstalin"
-          }
-        }
-      }
-      await expect(appController.updateUser(putReq, random.id)).toBeTruthy()
+            email: 'jstalin@gmail.com',
+            password: 'ihatepasswords',
+            username: 'jstalin',
+          },
+        },
+      };
+      const userToBeUpdated =
+        await appController.updateUser(putReq, random.id);
+      await expect(userToBeUpdated).toEqual({
+        id: Number(random.id),
+        email: 'jstalin@gmail.com',
+        password: 'ihatepasswords',
+        username: 'jstalin',
+      });
+    });
+
+    it('should delete User in the DB when DELETE /api/v1/user/:id is called', async () => {
+      const user = await svcUser.getRandomUser();
+      await appController.deleteUser(
+        {
+          body: { user }
+        },
+        Number(user?.id),
+      );
     });
 
     // Read user

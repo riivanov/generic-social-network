@@ -25,11 +25,6 @@ export class UsersService {
   async createUser(
     user: Partial<User>,
   ): Promise<User | null> {
-    // if (
-    //   await this.isUsernameTaken(user?.username) ||
-    //   await this.isEmailTaken(user?.email)
-    // )
-    //   return null;
 
     const newUser = AppDataSource.manager.create(
       User,
@@ -44,6 +39,14 @@ export class UsersService {
     } catch (e) {
       throw e;
     }
+  }
+
+  // @ts-ignore
+  async deleteUser(user: User, id?: number) {
+    if (!id) return null;
+    if (!('id' in user)) return null;
+
+    return await AppDataSource.manager.delete(User, user);
   }
 
   async getRandomUser() {
