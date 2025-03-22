@@ -38,8 +38,19 @@ export class UsersService {
     return AppDataSource.manager.save(newUser);
   }
 
+  async updateUser(user) {
+    try {
+      return await AppDataSource.manager.save(User, user);
+    } catch (e) {
+      throw e;
+    }
+  }
+
   async getRandomUser() {
-    const user = await AppDataSource.createQueryBuilder(User, 'user')
+    const user = await AppDataSource.createQueryBuilder(
+      User,
+      'user',
+    )
       .select()
       .orderBy('RANDOM()')
       .getOne();

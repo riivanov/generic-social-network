@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { AppDataSource } from './data-source';
 import { UsersService } from './users/users.service';
+import { QueryFailedError } from 'typeorm/error/QueryFailedError';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -55,6 +56,7 @@ describe('AppController', () => {
       });
     });
 
+    // Read user
     it('should read a User from the DB, when GET /api/v1/user/:id is called', async () => {
       await AppDataSource.destroy();
       await AppDataSource.initialize();
@@ -70,6 +72,58 @@ describe('AppController', () => {
       expect(getUser?.username).toBeTruthy();
       expect(getUser?.password).toBeDefined();
       expect(getUser?.password).toBeTruthy();
+    });
+
+    // Update user
+    it('should update props of user when PUT /api/v1/user/:id is called', async () => {
+      await AppDataSource.destroy();
+      await AppDataSource.initialize();
+      let putReq = {
+        "body": {
+          "user": {
+            "id": 1,
+            "password": null,
+            "email": null,
+            "username": null
+          },
+        },
+      };
+      await expect(() => appController.updateUser(putReq, 1)).rejects.toThrow(QueryFailedError)
+      putReq = {
+        "body": {
+          "user": {
+            "id": 1,
+            "password": "password",
+            "email": null,
+            "username": null
+          },
+        },
+      };
+      await expect(() => appController.updateUser(putReq, 1)).rejects.toThrow(QueryFailedError);
+      putReq = {
+        "body": {
+          "user": {
+            "id": 1,
+            "password": "password",
+            "email": "joe@gmail.com",
+            "username": null
+          },
+        },
+      };
+      await expect(() => appController.updateUser(putReq, 1)).rejects.toThrow(QueryFailedError);
+      const random = await svcUser.getRandomUser();
+      console.log(random);
+      putReq = {
+        body: {
+          user: {
+            id: Number(random.id),
+            email: "jstalin@gmail.com",
+            password: "ihatepasswords",
+            username: "jstalin"
+          }
+        }
+      }
+      await expect(appController.updateUser(putReq, random.id)).toBeTruthy()
     });
 
     // Read user
