@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { QueryFailedError } from 'typeorm';
 import { AppDataSource } from './../data-source';
 import { UserController } from './users.controller';
 import { UsersService } from './users.service';
-import { QueryFailedError } from 'typeorm';
 
 describe('UserController', () => {
   let userController: UserController;
@@ -60,61 +60,44 @@ describe('UserController', () => {
     it('should update props of user when PUT /api/v1/user/:id is called', async () => {
       if (!AppDataSource.isInitialized) await AppDataSource.initialize();
       let putReq = {
-        body: {
-          user: {
-            id: 1,
-            password: null,
-            email: null,
-            username: null,
-          },
-        },
+        id: '1',
+        password: null,
+        email: null,
+        username: null,
       };
       await expect(() => userController.updateUser(putReq, 1)).rejects.toThrow(
         QueryFailedError,
       );
       putReq = {
-        body: {
-          user: {
-            id: 1,
-            password: 'password',
-            email: null,
-            username: null,
-          },
-        },
+        id: '1',
+        password: 'password',
+        email: null,
+        username: null,
       };
       await expect(() => userController.updateUser(putReq, 1)).rejects.toThrow(
         QueryFailedError,
       );
       putReq = {
-        body: {
-          user: {
-            id: 1,
-            password: 'password',
-            email: 'joe@gmail.com',
-            username: null,
-          },
-        },
+        id: '1',
+        password: 'password',
+        email: 'joe@gmail.com',
+        username: null,
       };
       await expect(() => userController.updateUser(putReq, 1)).rejects.toThrow(
         QueryFailedError,
       );
       const random = await svcUser.getRandomUser();
+      if (!random) return;
+
       putReq = {
-        body: {
-          user: {
-            id: Number(random.id),
-            email: 'jstalin@gmail.com',
-            password: 'ihatepasswords',
-            username: 'jstalin',
-          },
-        },
+        id: random.id,
+        email: 'jstalin@gmail.com',
+        password: 'ihatepasswords',
+        username: 'jstalin',
       };
-      const userToBeUpdated = await userController.updateUser(
-        putReq,
-        random.id,
-      );
-      await expect(userToBeUpdated).toEqual({
-        id: Number(random.id),
+      const updatedUser = await userController.updateUser(putReq, random.id);
+      await expect(updatedUser).toEqual({
+        id: random.id,
         email: 'jstalin@gmail.com',
         password: 'ihatepasswords',
         username: 'jstalin',
@@ -122,14 +105,9 @@ describe('UserController', () => {
     });
 
     // Delete user
-    // it('should delete User in the DB when DELETE /api/v1/user/:id is called', async () => {
-    //   const user = await svcUser.getRandomUser();
-    //   await userController.deleteUser(
-    //     {
-    //       body: { user },
-    //     },
-    //     Number(user?.id),
-    //   );
-    // });
+    it('should delete User in the DB when DELETE /api/v1/user/:id is called', async () => {
+      const user = await svcUser.getRandomUser();
+      await userController.deleteUser(Number(user?.id) ?? null);
+    });
   });
 });

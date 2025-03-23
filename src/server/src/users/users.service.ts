@@ -26,19 +26,12 @@ export class UsersService {
   }
 
   async updateUser(user) {
-    try {
-      return await AppDataSource.manager.save(User, user);
-    } catch (e) {
-      throw e;
-    }
+    return await AppDataSource.manager.save(User, user);
   }
 
-  // @ts-ignore
-  async deleteUser(user: User, id?: number) {
-    if (!id) return null;
-    if (!('id' in user)) return null;
+  async deleteUser(id: number) {
 
-    return await AppDataSource.manager.delete(User, user);
+    return await AppDataSource.manager.delete(User, id);
   }
 
   async getRandomUser() {
