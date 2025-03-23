@@ -28,7 +28,7 @@ export class UserController {
   }
 
   // Read
-  @Get('user/:id')
+  @Get(':id')
   async getUser(@Param('id') id) {
     // TODO - when DB uses UUID this will go away
     const ID = Math.floor(Number(id)) ?? null;

@@ -4,9 +4,7 @@ import { AppDataSource } from '../data-source';
 
 @Injectable()
 export class UsersService {
-  async findOne(
-    username: string,
-  ): Promise<User | undefined> {
+  async findOne(username: string): Promise<User | undefined> {
     return AppDataSource.manager.findOne(User, {
       where: {
         username,
@@ -22,14 +20,8 @@ export class UsersService {
     });
   }
 
-  async createUser(
-    user: Partial<User>,
-  ): Promise<User | null> {
-
-    const newUser = AppDataSource.manager.create(
-      User,
-      user,
-    );
+  async createUser(user: Partial<User>): Promise<User | null> {
+    const newUser = AppDataSource.manager.create(User, user);
     return AppDataSource.manager.save(newUser);
   }
 
@@ -50,10 +42,7 @@ export class UsersService {
   }
 
   async getRandomUser() {
-    const user = await AppDataSource.createQueryBuilder(
-      User,
-      'user',
-    )
+    const user = await AppDataSource.createQueryBuilder(User, 'user')
       .select()
       .orderBy('RANDOM()')
       .getOne();
@@ -64,12 +53,11 @@ export class UsersService {
   async isUsernameTaken(username: string) {
     if (!username) return false;
 
-    const [users, num] =
-      await AppDataSource.manager.findAndCount(User, {
-        where: {
-          username,
-        },
-      });
+    const [users, num] = await AppDataSource.manager.findAndCount(User, {
+      where: {
+        username,
+      },
+    });
 
     if (num === 0) return false;
     return true;
@@ -78,10 +66,9 @@ export class UsersService {
   async isEmailTaken(email: string) {
     if (!email) return false;
 
-    const [users, num] =
-      await AppDataSource.manager.findAndCountBy(User, {
-        email,
-      });
+    const [users, num] = await AppDataSource.manager.findAndCountBy(User, {
+      email,
+    });
 
     if (num === 0) return false;
     return true;

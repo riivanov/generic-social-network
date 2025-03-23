@@ -5,22 +5,19 @@ import { UserController } from './users.controller';
 import { UsersService } from './users.service';
 
 describe('UserController', () => {
-  let usersController;
-  let svcUser;
+  let userController: UserController;
+  let svcUser: UsersService;
 
   beforeEach(async () => {
-    const app: TestingModule =
-      await Test.createTestingModule({
-        controllers: [UserController],
-        providers: [UsersService],
-      }).compile();
-    usersController =
-      app.get<UserController>(UserController);
+    const app: TestingModule = await Test.createTestingModule({
+      controllers: [UserController],
+      providers: [UsersService],
+    }).compile();
+    userController = app.get<UserController>(UserController);
     svcUser = app.get<UsersService>(UsersService);
   });
 
   describe('CRUD API', () => {
-
     // Create user
     it('should ceraate a user when /user is called', async () => {
       await AppDataSource.initialize();
@@ -31,8 +28,7 @@ describe('UserController', () => {
           email: 'joe@gmail.com',
         },
       };
-      let user =
-        await usersController.createUser(postReq);
+      let user = await userController.createUser(postReq);
       delete user.id;
       expect(user).toEqual({
         username: 'Joe',
@@ -46,9 +42,7 @@ describe('UserController', () => {
       await AppDataSource.destroy();
       await AppDataSource.initialize();
       const user = await svcUser.getRandomUser();
-      const getUser = await usersController.getUser(
-        user?.id,
-      );
+      const getUser = await userController.getUser(user?.id);
       expect(getUser?.id).toBeDefined();
       expect(getUser?.id).toBeTruthy();
       expect(getUser?.email).toBeDefined();
@@ -73,9 +67,9 @@ describe('UserController', () => {
           },
         },
       };
-      await expect(() =>
-        usersController.updateUser(putReq, 1),
-      ).rejects.toThrow(QueryFailedError);
+      await expect(() => userController.updateUser(putReq, 1)).rejects.toThrow(
+        QueryFailedError,
+      );
       putReq = {
         body: {
           user: {
@@ -86,9 +80,9 @@ describe('UserController', () => {
           },
         },
       };
-      await expect(() =>
-        usersController.updateUser(putReq, 1),
-      ).rejects.toThrow(QueryFailedError);
+      await expect(() => userController.updateUser(putReq, 1)).rejects.toThrow(
+        QueryFailedError,
+      );
       putReq = {
         body: {
           user: {
@@ -99,9 +93,9 @@ describe('UserController', () => {
           },
         },
       };
-      await expect(() =>
-        usersController.updateUser(putReq, 1),
-      ).rejects.toThrow(QueryFailedError);
+      await expect(() => userController.updateUser(putReq, 1)).rejects.toThrow(
+        QueryFailedError,
+      );
       const random = await svcUser.getRandomUser();
       putReq = {
         body: {
@@ -113,11 +107,10 @@ describe('UserController', () => {
           },
         },
       };
-      const userToBeUpdated =
-        await usersController.updateUser(
-          putReq,
-          random.id,
-        );
+      const userToBeUpdated = await userController.updateUser(
+        putReq,
+        random.id,
+      );
       await expect(userToBeUpdated).toEqual({
         id: Number(random.id),
         email: 'jstalin@gmail.com',
@@ -129,7 +122,7 @@ describe('UserController', () => {
     // Delete user
     it('should delete User in the DB when DELETE /api/v1/user/:id is called', async () => {
       const user = await svcUser.getRandomUser();
-      await usersController.deleteUser(
+      await userController.deleteUser(
         {
           body: { user },
         },
