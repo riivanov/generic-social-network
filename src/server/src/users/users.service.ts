@@ -20,7 +20,7 @@ export class UsersService {
     });
   }
 
-  async createUser(user: Partial<User>): Promise<User | null> {
+  async createUser(user: Partial<User>) {
     const newUser = AppDataSource.manager.create(User, user);
     return AppDataSource.manager.save(newUser);
   }
