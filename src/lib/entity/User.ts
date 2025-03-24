@@ -12,10 +12,10 @@ export class User implements IUser {
   password: string;
 
   // @ts-ignore
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   // @ts-ignore
-  @Column()
+  @Column({ unique: true})
   username: string;
 }
