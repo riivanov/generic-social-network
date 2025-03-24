@@ -19,7 +19,7 @@ describe('UserController', () => {
 
   describe('CRUD API', () => {
     // Create user
-    it('should ceraate a user when /user is called', async () => {
+    it('should create a user when /user is called', async () => {
       if (!AppDataSource.isInitialized) await AppDataSource.initialize();
       const postReq = {
         id: null,

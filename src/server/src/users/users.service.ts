@@ -20,6 +20,14 @@ export class UsersService {
     });
   }
 
+  async findOneByEmail(email: string): Promise<User | null> {
+    return AppDataSource.manager.findOne(User, {
+      where: {
+        email
+      },
+    });
+  }
+
   async createUser(user: Partial<User>) {
     const newUser = AppDataSource.manager.create(User, user);
     return AppDataSource.manager.save(newUser);

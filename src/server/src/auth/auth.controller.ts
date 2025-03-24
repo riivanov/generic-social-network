@@ -19,11 +19,11 @@ export class AuthController {
 
   // @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Body() user: User) {
+  async login(@Body() user: Partial<User>) {
     if (!('email' in user)) throw new HttpException("Email not present in User", 400)
     if (!('password' in user)) throw new HttpException("Password not present in User", 400)
     
-    return this.svcAuth.login(user);
+    return this.svcAuth.login(user as User);
   }
 
   @UseGuards(JwtAuthGuard)

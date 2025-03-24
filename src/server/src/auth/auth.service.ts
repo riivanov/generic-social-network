@@ -1,5 +1,5 @@
 import { User } from '@lib/entity/User';
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 
@@ -11,8 +11,17 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, pass: string) {
-    const user =
-      await this.svcUser.findOne(username);
+    const user = await this.svcUser.findOne(username);
+    if (user && user.password === pass) {
+      const { password, ...result } = user;
+      return result;
+    }
+
+    return null;
+  }
+
+  async validateUserByEmail(email: string, pass: string) {
+    const user = await this.svcUser.findOneByEmail(email);
     if (user && user.password === pass) {
       const { password, ...result } = user;
       return result;
@@ -22,12 +31,14 @@ export class AuthService {
   }
 
   async login(user: User) {
-    const payload = {
-      email: user.email,
-    };
+    if (this.validateUserByEmail(user?.email, user?.password)) {
+      const payload = {
+        email: user.email,
+      };
 
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+      return {
+        access_token: this.jwtService.sign(payload),
+      };
+    } else throw new UnauthorizedException();
   }
 }

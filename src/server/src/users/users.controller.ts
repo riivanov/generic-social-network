@@ -22,6 +22,7 @@ export class UserController {
   // Create
   @Post()
   createUser(@Body() user: User) {
+    console.log(user)
     if (!('username' in user))
       throw new HttpException('Username not provided', 400);
     if (!('password' in user))
