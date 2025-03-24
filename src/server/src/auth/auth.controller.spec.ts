@@ -6,6 +6,8 @@ import { UsersService } from './../users/users.service';
 import { AuthController } from './auth.controller';
 import { AuthModule } from './auth.module';
 import { AuthService } from './auth.service';
+import { HttpException, UnauthorizedException } from '@nestjs/common';
+import { User } from '@lib/entity/User';
 
 describe('AuthController', () => {
   let svcUser: UsersService;
@@ -33,7 +35,7 @@ describe('AuthController', () => {
 
   it('should create a user and successfully log in', async () => {
     if (!AppDataSource.isInitialized) await AppDataSource.initialize();
-    let user = {
+    let user: Partial<User> = {
       email: 'joe@gmail.com',
       username: 'joe',
       password: 'password',
@@ -50,5 +52,23 @@ describe('AuthController', () => {
     expect('email' in jwtDecoded).toBeTruthy();
     expect('iat' in jwtDecoded).toBeTruthy();
     expect('exp' in jwtDecoded).toBeTruthy();
+
+
+    user = {
+      email: 'john@gmail.com',
+      username: 'joe',
+      password: 'password',
+    };
+    await expect(controller.login(user)).rejects.toThrow(UnauthorizedException);
+    user = {
+      username: 'joe',
+      password: 'password',
+    };
+    await expect(controller.login(user)).rejects.toThrow(HttpException);
+    user = {
+      email: 'john@gmail.com',
+      username: 'joe',
+    };
+    await expect(controller.login(user)).rejects.toThrow(HttpException);
   });
 });

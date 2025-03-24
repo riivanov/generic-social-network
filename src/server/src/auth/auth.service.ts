@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   async login(user: User) {
-    if (this.validateUserByEmail(user?.email, user?.password)) {
+    if (await this.validateUserByEmail(user?.email, user?.password)) {
       const payload = {
         email: user.email,
       };
