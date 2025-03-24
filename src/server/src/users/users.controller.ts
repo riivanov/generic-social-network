@@ -8,7 +8,6 @@ import {
   Param,
   Post,
   Put,
-  Request,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 
@@ -48,7 +47,6 @@ export class UserController {
   // Update
   @Put(':id')
   async updateUser(@Body() user: Partial<User>, @Param('id') id) {
-
     return await this.svcUser.updateUser(user);
   }
 
