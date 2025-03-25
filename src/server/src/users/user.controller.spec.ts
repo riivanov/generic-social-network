@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { QueryFailedError } from 'typeorm';
+import { v4 as uuidv4 } from 'uuid';
 import { AppDataSource } from './../data-source';
 import { UserController } from './users.controller';
 import { UsersService } from './users.service';
@@ -21,19 +22,39 @@ describe('UserController', () => {
     // Create user
     it('should create a user when /user is called', async () => {
       if (!AppDataSource.isInitialized) await AppDataSource.initialize();
-      const postReq = {
-        id: null,
+      let postReq = {
+        id: uuidv4(),
         username: 'Joe',
         password: 'password',
         email: 'joe@gmail.com',
       };
-      let user = await userController.createUser(postReq);
-      delete user.id;
-      expect(user).toEqual({
-        username: 'Joe',
-        password: 'password',
-        email: 'joe@gmail.com',
-      });
+      const user = await svcUser.findOneByEmail(postReq?.email);
+      if (user) {
+        await expect(userController.createUser(postReq)).rejects.toThrow(
+          QueryFailedError,
+        );
+        delete user.id;
+        expect(user).toEqual({
+          username: 'Joe',
+          password: 'password',
+          email: 'joe@gmail.com',
+        });
+      } else {
+        const postReq1 = {
+          id: uuidv4(),
+          password: 'password',
+          email: 'joe@gmail.com',
+          username: 'Joe',
+        };
+        const user2 = await userController.createUser(postReq1);
+        console.log(user2)
+        expect(user2).toEqual({
+          id: postReq1.id,
+          password: 'password',
+          email: 'joe@gmail.com',
+          username: 'Joe',
+        });
+      }
     });
 
     // Read user
@@ -92,8 +113,8 @@ describe('UserController', () => {
       putReq = {
         id: random.id,
         email: 'jstalin@gmail.com',
-        password: 'ihatepasswords',
         username: 'jstalin',
+        password: 'ihatepasswords',
       };
       const updatedUser = await userController.updateUser(putReq, random.id);
       await expect(updatedUser).toEqual({
@@ -107,7 +128,7 @@ describe('UserController', () => {
     // Delete user
     it('should delete User in the DB when DELETE /api/v1/user/:id is called', async () => {
       const user = await svcUser.getRandomUser();
-      await userController.deleteUser(Number(user?.id) ?? null);
+      await userController.deleteUser(user?.id ?? null);
     });
   });
 });

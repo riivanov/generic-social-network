@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   password: 'test',
   database: 'gsn',
   synchronize: false,
-  logging: false,
+  logging: true,
   entities: [User],
   subscribers: [],
   migrations: [__dirname + "/../migrations/**/*.ts"],

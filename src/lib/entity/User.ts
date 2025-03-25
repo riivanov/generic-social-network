@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class User implements IUser {
   // @ts-ignore
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   // @ts-ignore
@@ -16,6 +16,6 @@ export class User implements IUser {
   email: string;
 
   // @ts-ignore
-  @Column({ unique: true})
+  @Column({ unique: true })
   username: string;
 }
