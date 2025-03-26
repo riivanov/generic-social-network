@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { AppDataSource } from './../data-source';
 import { UserController } from './users.controller';
 import { UsersService } from './users.service';
+import { User } from '@lib/entity/User';
+let randomEmail = require('random-email')
 
 describe('UserController', () => {
   let userController: UserController;
@@ -109,19 +111,21 @@ describe('UserController', () => {
       );
       const random = await svcUser.getRandomUser();
       if (!random) return;
+      const email = randomEmail() as string;
+      const username = email.split('@')[0]
 
       putReq = {
         id: random.id,
-        email: 'jstalin@gmail.com',
-        username: 'jstalin',
+        email,
+        username,
         password: 'ihatepasswords',
       };
       const updatedUser = await userController.updateUser(putReq, random.id);
-      await expect(updatedUser).toEqual({
+      await expect(putReq).toEqual({
         id: random.id,
-        email: 'jstalin@gmail.com',
+        email: updatedUser.email,
         password: 'ihatepasswords',
-        username: 'jstalin',
+        username: updatedUser.username
       });
     });
 

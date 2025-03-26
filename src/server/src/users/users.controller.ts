@@ -44,7 +44,7 @@ export class UserController {
   // Update
   @Put(':id')
   async updateUser(@Body() user: Partial<User>, @Param('id') id) {
-    return await this.svcUser.updateUser(user);
+    return await this.svcUser.updateUser(user, id);
   }
 
   // Delete

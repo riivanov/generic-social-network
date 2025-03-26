@@ -1,5 +1,5 @@
-import { User } from '../../lib/entity/User';
 import { DataSource } from 'typeorm';
+import { User } from '../../lib/entity/User';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -9,8 +9,8 @@ export const AppDataSource = new DataSource({
   password: 'test',
   database: 'gsn',
   synchronize: false,
-  logging: true,
+  logging: false,
   entities: [User],
   subscribers: [],
-  migrations: [__dirname + "/../migrations/**/*.ts"],
+  migrations: [__dirname + '/../migrations/**/*.ts'],
 });

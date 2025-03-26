@@ -23,7 +23,7 @@ export class UsersService {
   async findOneByEmail(email: string): Promise<User | null> {
     return AppDataSource.manager.findOne(User, {
       where: {
-        email
+        email,
       },
     });
   }
@@ -33,12 +33,11 @@ export class UsersService {
     return AppDataSource.manager.save(newUser);
   }
 
-  async updateUser(user) {
+  async updateUser(user, uuid) {
     return await AppDataSource.manager.save(User, user);
   }
 
   async deleteUser(id: number) {
-
     return await AppDataSource.manager.delete(User, id);
   }
 
