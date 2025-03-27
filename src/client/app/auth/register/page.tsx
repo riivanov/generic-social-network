@@ -1,15 +1,15 @@
 "use client";
 
+import { IUser } from "@lib/models/user.interface";
 import { ServerClientEvents } from "@lib/socket/event-names";
 import { Button, Link, TextField } from "@mui/material";
 import PasswordStrengthComponent from "app/components/password-strength/password-strength";
 import { SocketService } from "app/services/socket.service";
+import { UserService } from "app/services/user.service";
 import { useFormik } from "formik";
 import { ChangeEvent, useState } from "react";
 import * as yup from "yup";
 import styles from "./page.module.scss";
-import { IUser } from "@lib/models/user.interface";
-import { UserService } from "app/services/user.service";
 
 export default function RegisterComponent() {
   const validationSchema = yup.object({
@@ -75,6 +75,13 @@ export default function RegisterComponent() {
     setIsUsernameTaken(isTaken);
   }
 
+  function isInputDirty(name: string) {
+    let boolean =
+      formik.getFieldMeta(name).value ===
+      formik.getFieldMeta(name).initialValue;
+    return !boolean;
+  }
+
   return (
     <>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
@@ -132,7 +139,9 @@ export default function RegisterComponent() {
           helperText={formik.touched.password && formik.errors.password}
           type="password"
         ></TextField>
-        <PasswordStrengthComponent password={formik.values.password} />
+        {isInputDirty("password") && (
+          <PasswordStrengthComponent password={formik.values.password} />
+        )}
         <Button className={styles.continue} variant="contained" type="submit">
           Continue
         </Button>
