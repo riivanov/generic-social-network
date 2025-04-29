@@ -2,7 +2,6 @@
 
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { APIService } from "app/services/api.service";
 import Link from "next/link";
 import { useEffect } from "react";
 import styles from "./page.module.scss";
@@ -10,7 +9,6 @@ import { Button, TextField } from "@mui/material";
 
 export default function LoginComponent() {
   useEffect(() => {
-    APIService.instance.fetchPeople();
 
     return () => {};
   }, []);

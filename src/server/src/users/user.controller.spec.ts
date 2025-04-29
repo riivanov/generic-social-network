@@ -37,7 +37,7 @@ describe('UserController', () => {
         );
         delete user.id;
         expect(user).toEqual({
-          username: 'Joe',
+          username: 'joe',
           password: 'password',
           email: 'joe@gmail.com',
         });
