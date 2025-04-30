@@ -27,7 +27,9 @@ export class UserController {
       throw new HttpException('Password not provided', 400);
     if (!('email' in user)) throw new HttpException('Email not provided', 400);
 
-    return this.svcUser.createUser(user);
+    const created  = await this.svcUser.createUser(user);
+    delete created.password
+    return created;
   }
 
   // Read
