@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import { ChangeEvent, useState } from "react";
 import * as yup from "yup";
 import styles from "./page.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function RegisterComponent() {
   const validationSchema = yup.object({
@@ -42,10 +43,14 @@ export default function RegisterComponent() {
 
   const [isUsernameTaken, setIsUsernameTaken] = useState(false);
   const [isEmailTaken, setIsEmailTaken] = useState(false);
+  const router = useRouter()
 
-  function handleSubmit(values: IUser) {
+  async function handleSubmit(values: IUser) {
     console.log(JSON.stringify(values, null, 2), "clicked");
-    UserService.instance.createUser(values);
+    const user = await UserService.instance.createUser(values);
+    if (user) {
+      router.push("/auth/login")
+    }
   }
 
   function handleEmailChange(ev: ChangeEvent<HTMLInputElement>) {

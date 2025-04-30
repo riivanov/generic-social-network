@@ -30,6 +30,6 @@ export class UserService {
       body: JSON.stringify(user),
     }).then(response => response.json()) as IUser;
 
-    console.log(res);
+    return res;
   }
 }
