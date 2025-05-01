@@ -8,6 +8,8 @@ import { useFormik } from "formik";
 import Link from "next/link";
 import * as yup from "yup";
 import styles from "./page.module.scss";
+import { UserService } from "app/services/user.service";
+import { useRouter } from "next/navigation";
 
 export default function LoginComponent() {
   const validationSchema = yup.object({
@@ -29,8 +31,14 @@ export default function LoginComponent() {
     onSubmit: handleSubmit,
   });
 
-  function handleSubmit(user: Partial<IUser>) {
-    console.log(user);
+  const router = useRouter();
+
+  async function handleSubmit(user: IUser) {
+    // console.log(user);
+    const res = await UserService.instance.login(user)
+    if (res) {
+      router.push("/profile")
+    }
   }
 
   return (
