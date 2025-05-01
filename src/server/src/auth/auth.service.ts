@@ -2,6 +2,7 @@ import { User } from '@lib/entity/User';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
+import { AuthenticatedUser } from '@lib/models/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -30,7 +31,7 @@ export class AuthService {
     return null;
   }
 
-  async login(user: User) {
+  async login(user: User): Promise<Partial<AuthenticatedUser>> {
     if (await this.validateUserByEmail(user?.email, user?.password)) {
       const payload = {
         email: user.email,
