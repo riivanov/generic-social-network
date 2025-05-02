@@ -1,6 +1,7 @@
 import { User } from '@lib/entity/User';
 import { Injectable } from '@nestjs/common';
 import { AppDataSource } from '../data-source';
+import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class UsersService {
@@ -29,6 +30,8 @@ export class UsersService {
   }
 
   async createUser(user: Partial<User>) {
+    const hashedPassword = await bcrypt.hash(user?.password, 12)
+    user.password = hashedPassword;
     const newUser = AppDataSource.manager.create(User, user);
     return AppDataSource.manager.save(newUser);
   }
